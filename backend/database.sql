@@ -47,7 +47,7 @@ CREATE TABLE
 -- -----------------------------------------------------
 
 CREATE TABLE
-    IF NOT EXISTS `mydb`.`color` (
+    IF NOT EXISTS `emmaus_phone`.`color` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `color_name_en` VARCHAR(45) NOT NULL,
         `color_name_fr` VARCHAR(45) NOT NULL,
@@ -61,7 +61,7 @@ CREATE TABLE
 -- -----------------------------------------------------
 
 CREATE TABLE
-    IF NOT EXISTS `mydb`.`model` (
+    IF NOT EXISTS `emmaus_phone`.`model` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `model_name` VARCHAR(100) NOT NULL,
         `screen_size_inch` VARCHAR(45) NOT NULL,
