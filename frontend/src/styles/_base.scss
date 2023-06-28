@@ -1,0 +1,9 @@
+@use "./typography" as *;
+@use "./button" as *;
+
+html,
+body {
+  font-feature-settings: "tnum" on, "lnum" on;
+  font-family: $font-family;
+  color: var(--grey-900);
+}
