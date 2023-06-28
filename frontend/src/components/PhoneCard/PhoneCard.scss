@@ -3,8 +3,8 @@
 @use "../../styles/shadows" as *;
 
 .phone-card {
-  // flex-basis: calc(100% / 3 - (24px / 3) * 2);
-  width: 300px;
+  
+  width: 100%;
   @include shadow("xs");
   border: 1px solid var(--grey-200);
   border-radius: 12px;
@@ -23,11 +23,26 @@
       position: absolute;
       top: 2rem;
       left: 0;
-      background-color: var(--yellow-500);
       color: var(--white);
       padding: 0.5rem 1rem;
       border-radius: 0 0.5rem 0.5rem 0;
       @include shadow("md");
+
+      &-A{
+        background-color: var(--amber-500);
+      }
+      &-B{
+        background-color: var(--yellow-500);
+      }
+      &-C{
+        background-color: var(--green-500);
+      }
+      &-HC{
+        background-color: var(--blue-500);
+      }
+      &-Premium{
+        background-color: var(--red-500);
+      }
     }
   }
   .card-info {
@@ -53,8 +68,10 @@
       gap: 4px;
       flex-direction: column;
       align-items: flex-start;
+      color: var(--grey-500);
       span {
         @include text("md", $weight: 600);
+        color: var(--grey-600);
       }
     }
     .more-info {
@@ -63,3 +80,12 @@
     }
   }
 }
+
+@media screen and (min-width: 768px) {
+  .phone-card {
+    // flex-basis: calc(100% / 3 - (24px / 3) * 2);
+    width: 300px;
+  }
+}
+    
+

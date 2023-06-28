@@ -9,7 +9,7 @@ function PhoneCard() {
           src="https://daisycon.io/images/mobile-device/?width=500&height=500&color=ffffff&mobile_device_brand=xiaomi&mobile_device_model=12t+128gb"
           alt="smartphone"
         />
-        <div className="cat-price">
+        <div className="cat-price cat-price-B">
           <p>Cat • Price</p>
         </div>
       </div>
@@ -32,7 +32,7 @@ function PhoneCard() {
             <span>Accessoires :</span> accessoires
           </p>
         </div>
-        <button className="more-info " type="button">
+        <button className="more-info" type="button">
           En savoir plus
         </button>
       </div>
