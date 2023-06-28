@@ -65,12 +65,22 @@ const verifyToken = (req, res, next) => {
 };
 
 const verifyAdminRole = (req, res, next) => {
-  // const role = req.get("Role");
-  // if (role === "admin") {
-  next();
-  // } else {
-  //   res.sendStatus(403).send("Forbidden");
-  // }
+  const isAdmin = req.get("is_admin");
+  if (isAdmin) {
+    next();
+  } else {
+    res.sendStatus(403).send("Forbidden");
+  }
+};
+
+const checkId = (req, res, next) => {
+  const id = parseInt(req.params.id, 10);
+  const payload = req.payload.sub;
+  if (id === payload) {
+    next();
+  } else {
+    res.status(403).send("Forbidden");
+  }
 };
 
 module.exports = {
@@ -78,4 +88,5 @@ module.exports = {
   verifyPassword,
   verifyToken,
   verifyAdminRole,
+  checkId,
 };
