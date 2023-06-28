@@ -55,71 +55,59 @@ export default function Authentication() {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit} className="connection">
-        <div className="connection-input">
-          <label htmlFor="mail">Mail</label>
-          <input
-            name="mail"
-            id="mail"
-            type="text"
-            autoComplete="true"
-            value={mail}
-            onChange={handleMailChange}
-          />
-          <p className="description-username">
-            Votre nom d'utilisateur est votre mail fournit à votre inscription
-          </p>
-        </div>
-        <div className="password-input">
-          <label htmlFor="password">Mot de passe</label>
-          <div className="password-input-and-show">
-            <input
-              name="password"
-              id="password"
-              autoComplete="current-password"
-              type={!passwordShown ? "password" : "text"}
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            <button
-              onClick={togglePassword}
-              type="button"
-              className="hide-or-show-button"
-            >
-              <i
-                id="pw-icon-show-hide"
-                className={
-                  passwordShown ? "fi fi-rr-eye-crossed" : "fi fi-rr-eye"
-                }
-                alt="button to show or hide password"
+    <div className="connection">
+      <form onSubmit={handleSubmit}>
+        <div className="input-line">
+          <div className="input-field">
+            <label htmlFor="mail">Adresse email</label>
+            <div className="input">
+              <input
+                name="mail"
+                id="mail"
+                type="text"
+                autoComplete="true"
+                value={mail}
+                onChange={handleMailChange}
               />
-            </button>
+            </div>
+          </div>
+        </div>
+        <div className="input-line">
+          <div className="input-field">
+            <label htmlFor="password">Mot de passe</label>
+            <div className="input">
+              <input
+                name="password"
+                id="password"
+                autoComplete="current-password"
+                type={!passwordShown ? "password" : "text"}
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              <button
+                onClick={togglePassword}
+                type="button"
+                className="hide-or-show-button"
+              >
+                <i
+                  id="pw-icon-show-hide"
+                  className={
+                    passwordShown ? "fi fi-rr-eye-crossed" : "fi fi-rr-eye"
+                  }
+                  alt="button to show or hide password"
+                />
+              </button>
+            </div>
           </div>
         </div>
         <button type="submit" className="connection-button">
-          SE CONNECTER
+          Se connecter
         </button>
       </form>
       {failAuth && (
-        <div>
-          <button
-            className="bg-fail-auth-modal"
-            type="button"
-            onClick={() => setFailAuth(false)}
-            label="close fail authentication modal"
-          />
-          <div className="fail-auth-modal">
-            <button
-              className="exit-modal-fail-button"
-              type="button"
-              onClick={() => setFailAuth(false)}
-            >
-              <i className="fi fi-rr-cross-small" />
-            </button>
-            <p>Les champs renseignés ne correspondent pas.</p>
-            <p>Veuillez réessayer.</p>
-          </div>
+        <div className="fail-auth-modal">
+          <p>Les champs renseignés ne correspondent pas.</p>
+          <p>Veuillez réessayer.</p>
         </div>
       )}
     </div>
