@@ -1,0 +1,88 @@
+@use "../../styles/typography" as *;
+@use "../../styles/button" as *;
+@use "../../styles/shadows" as *;
+
+.phone-card {
+  width: 100%;
+  @include shadow("xs");
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+
+  .card-header {
+    padding: 1rem;
+    padding-bottom: 0;
+    display: grid;
+    place-items: center;
+    img {
+      width: 80%;
+    }
+    .cat-price {
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      @include shadow("md");
+
+      &-A {
+        background-color: var(--amber-500);
+      }
+      &-B {
+        background-color: var(--yellow-500);
+      }
+      &-C {
+        background-color: var(--green-500);
+      }
+      &-HC {
+        background-color: var(--blue-500);
+      }
+      &-Premium {
+        background-color: var(--red-500);
+      }
+    }
+  }
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    .card-info-header {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      h2 {
+        @include title("xs", $weight: 500);
+        word-wrap: break-word;
+        word-break: break-all;
+        text-wrap: balance;
+      }
+    }
+    .caracteristics {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+      align-items: flex-start;
+      color: var(--grey-500);
+      span {
+        @include text("md", $weight: 600);
+        color: var(--grey-600);
+      }
+    }
+    .more-info {
+      width: 100%;
+      @include button("md", $color: "blue", $style: "solid");
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .phone-card {
+    // flex-basis: calc(100% / 3 - (24px / 3) * 2);
+    width: 300px;
+  }
+}
