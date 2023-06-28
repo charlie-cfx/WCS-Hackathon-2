@@ -196,7 +196,7 @@ INSERT INTO
     )
 VALUES (
         'test1@mail.com',
-        '$argon2id$v=19$m=65536,t=5,p=1$xSZenb4qmCK5FEdUeaPCvw$8EF2vMXW9EUA1XgmF9KXvhk58WCiEa7T+MJBFMldTpM',
+        '$argon2id$v=19$m=65536,t=5,p=1$lA0CshE6soYhU4RLw+ewUA$jnT+zkdbVyizxpJfmf0l+iXhysMnkmzyxD1hNRUp2Fc',
         'testeur2',
         'Jean',
         '3288378372',

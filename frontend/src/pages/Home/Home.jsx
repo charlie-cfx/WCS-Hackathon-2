@@ -25,7 +25,7 @@ export default function Home() {
         <div className="input-switch input-switch--sm">
           <label htmlFor="switch">
             <input type="checkbox" name="" id="switch" />
-            <div className="toggle-switch"></div>
+            <div className="toggle-switch" />
           </label>
         </div>
         <div className="input-field">
