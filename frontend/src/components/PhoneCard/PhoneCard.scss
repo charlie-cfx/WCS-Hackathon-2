@@ -3,7 +3,6 @@
 @use "../../styles/shadows" as *;
 
 .phone-card {
-  
   width: 100%;
   @include shadow("xs");
   border: 1px solid var(--grey-200);
@@ -28,19 +27,19 @@
       border-radius: 0 0.5rem 0.5rem 0;
       @include shadow("md");
 
-      &-A{
+      &-A {
         background-color: var(--amber-500);
       }
-      &-B{
+      &-B {
         background-color: var(--yellow-500);
       }
-      &-C{
+      &-C {
         background-color: var(--green-500);
       }
-      &-HC{
+      &-HC {
         background-color: var(--blue-500);
       }
-      &-Premium{
+      &-Premium {
         background-color: var(--red-500);
       }
     }
@@ -87,5 +86,3 @@
     width: 300px;
   }
 }
-    
-
