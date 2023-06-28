@@ -8,11 +8,9 @@ export default function Authentication() {
   const { setUser, setUserInfo } = useContext(AuthContext);
 
   // regex definition for mail user
-  // const regexMail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
   // useState definition
   const [mail, setMail] = useState("");
-  // const [warningMail, setWarningMail] = useState(false);
   const [password, setPassword] = useState("");
   const [passwordShown, setPasswordShown] = useState(false);
   const [failAuth, setFailAuth] = useState(false);
