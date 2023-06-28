@@ -18,7 +18,7 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`user` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `mail` VARCHAR(255) NOT NULL,
-        `hashed_password` VARCHAR(32) NOT NULL,
+        `hashed_password` VARCHAR(255) NOT NULL,
         `lastname` VARCHAR(100) NULL,
         `firstname` VARCHAR(100) NULL,
         `phone` VARCHAR(18) NULL,
@@ -42,7 +42,7 @@ CREATE TABLE
 
 -- -----------------------------------------------------
 
--- Table `mydb`.`color`
+-- Table `emmaus_phone`.`color`
 
 -- -----------------------------------------------------
 
@@ -72,8 +72,8 @@ CREATE TABLE
         PRIMARY KEY (`id`, `brand_id`, `color_id`),
         INDEX `fk_model_brand1_idx` (`brand_id` ASC) VISIBLE,
         INDEX `fk_model_color1_idx` (`color_id` ASC) VISIBLE,
-        CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `mydb`.`brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-        CONSTRAINT `fk_model_color1` FOREIGN KEY (`color_id`) REFERENCES `mydb`.`color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+        CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `emmaus_phone`.`brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_model_color1` FOREIGN KEY (`color_id`) REFERENCES `emmaus_phone`.`color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
@@ -184,3 +184,21 @@ CREATE TABLE
         `answer` VARCHAR(255) NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
+
+INSERT INTO
+    `user`(
+        mail,
+        hashed_password,
+        lastname,
+        firstname,
+        phone,
+        is_admin
+    )
+VALUES (
+        'test1@mail.com',
+        '$argon2id$v=19$m=65536,t=5,p=1$xSZenb4qmCK5FEdUeaPCvw$8EF2vMXW9EUA1XgmF9KXvhk58WCiEa7T+MJBFMldTpM',
+        'testeur2',
+        'Jean',
+        '3288378372',
+        1
+    );
