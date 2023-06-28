@@ -18,7 +18,7 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`user` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `mail` VARCHAR(255) NOT NULL,
-        `hashed_password` VARCHAR(32) NOT NULL,
+        `hashed_password` VARCHAR(255) NOT NULL,
         `lastname` VARCHAR(100) NULL,
         `firstname` VARCHAR(100) NULL,
         `phone` VARCHAR(18) NULL,
@@ -42,6 +42,20 @@ CREATE TABLE
 
 -- -----------------------------------------------------
 
+-- Table `emmaus_phone`.`color`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `emmaus_phone`.`color` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `color_name_en` VARCHAR(45) NOT NULL,
+        `color_name_fr` VARCHAR(45) NOT NULL,
+        PRIMARY KEY (`id`)
+    ) ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+
 -- Table `emmaus_phone`.`model`
 
 -- -----------------------------------------------------
@@ -53,7 +67,13 @@ CREATE TABLE
         `screen_size_inch` VARCHAR(45) NOT NULL,
         `screen_size_cm` VARCHAR(45) NOT NULL,
         `weighting` INT NOT NULL,
-        PRIMARY KEY (`id`)
+        `brand_id` INT NOT NULL,
+        `color_id` INT NOT NULL,
+        PRIMARY KEY (`id`, `brand_id`, `color_id`),
+        INDEX `fk_model_brand1_idx` (`brand_id` ASC) VISIBLE,
+        INDEX `fk_model_color1_idx` (`color_id` ASC) VISIBLE,
+        CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `emmaus_phone`.`brand` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+        CONSTRAINT `fk_model_color1` FOREIGN KEY (`color_id`) REFERENCES `emmaus_phone`.`color` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
