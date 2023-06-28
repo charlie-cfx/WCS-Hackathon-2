@@ -82,19 +82,6 @@ CREATE TABLE
 
 -- -----------------------------------------------------
 
--- Table `emmaus_phone`.`OS_version`
-
--- -----------------------------------------------------
-
-CREATE TABLE
-    IF NOT EXISTS `emmaus_phone`.`OS_version` (
-        `id` INT NOT NULL AUTO_INCREMENT,
-        `version` VARCHAR(45) NOT NULL,
-        PRIMARY KEY (`id`)
-    ) ENGINE = InnoDB;
-
--- -----------------------------------------------------
-
 -- Table `emmaus_phone`.`OS`
 
 -- -----------------------------------------------------
@@ -108,6 +95,19 @@ CREATE TABLE
         PRIMARY KEY (`id`, `OS_version_id`),
         INDEX `fk_OS_OS_version1_idx` (`OS_version_id` ASC) VISIBLE,
         CONSTRAINT `fk_OS_OS_version1` FOREIGN KEY (`OS_version_id`) REFERENCES `emmaus_phone`.`OS_version` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+    ) ENGINE = InnoDB;
+
+-- -----------------------------------------------------
+
+-- Table `emmaus_phone`.`OS_version`
+
+-- -----------------------------------------------------
+
+CREATE TABLE
+    IF NOT EXISTS `emmaus_phone`.`OS_version` (
+        `id` INT NOT NULL AUTO_INCREMENT,
+        `version` VARCHAR(45) NOT NULL,
+        PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
 -- -----------------------------------------------------
