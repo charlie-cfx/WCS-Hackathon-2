@@ -2,12 +2,17 @@ const express = require("express");
 
 const router = express.Router();
 
-const itemControllers = require("./controllers/itemControllers");
+const {
+  hashPassword,
+  verifyPassword,
+  verifyToken,
+  verifyAdminRole,
+} = require("./services/auth");
 
-router.get("/items", itemControllers.browse);
-router.get("/items/:id", itemControllers.read);
-router.put("/items/:id", itemControllers.edit);
-router.post("/items", itemControllers.add);
-router.delete("/items/:id", itemControllers.destroy);
+const user = require("./controllers/userControllers");
+
+router.post("/user/login", user.authenticationCheck, verifyPassword);
+
+router.put("/users/:id", hashPassword, user.modifyUser);
 
 module.exports = router;
