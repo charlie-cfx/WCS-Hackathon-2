@@ -18,6 +18,7 @@ export default function PhoneCard({ phone }) {
     memory,
     accessory_name,
   } = phone;
+
   const phonePrice = "250";
   const priceCategory = "B";
   const modelImage = model_name.split(" ").join("+").toLowerCase();
@@ -123,8 +124,8 @@ PhoneCard.propTypes = {
     color_name_fr: PropTypes.string.isRequired,
     screen_size_inch: PropTypes.string.isRequired,
     OS_name: PropTypes.string.isRequired,
-    ram: PropTypes.string.isRequired,
-    memory: PropTypes.string.isRequired,
+    ram: PropTypes.number.isRequired,
+    memory: PropTypes.number.isRequired,
     network: PropTypes.string.isRequired,
     accessory_name: PropTypes.string.isRequired,
   }).isRequired,

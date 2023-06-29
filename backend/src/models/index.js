@@ -59,7 +59,7 @@ const OsVersionManager = require("./Os_versionManager");
 models.os_version = new OsVersionManager();
 models.os_version.setDatabase(pool);
 
-const StateManager = require("./Os_versionManager");
+const StateManager = require("./StateManager");
 
 models.state = new StateManager();
 models.state.setDatabase(pool);
@@ -69,7 +69,7 @@ const PhoneManager = require("./PhoneManager");
 models.phone = new PhoneManager();
 models.phone.setDatabase(pool);
 
-const BrandManager = require("./PhoneManager");
+const BrandManager = require("./BrandManager");
 
 models.brand = new BrandManager();
 models.brand.setDatabase(pool);

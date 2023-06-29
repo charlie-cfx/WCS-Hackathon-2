@@ -19,11 +19,13 @@ export default function Navbar() {
           <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
         </div>
         <ul className="items">
-          <li>
-            <button className="button-md-blue-solid" type="button">
-              <i className="fi fi-rr-plus" /> Ajouter un smartphone
-            </button>
-          </li>
+          {isAdmin === 1 && (
+            <li>
+              <button className="button-md-blue-solid" type="button">
+                <i className="fi fi-rr-plus" /> Ajouter un smartphone
+              </button>
+            </li>
+          )}
           <li>
             <button
               className="button-md-grey-link"
@@ -71,11 +73,13 @@ export default function Navbar() {
         </nav>
         {isMenuOpen && (
           <ul className="items">
-            <li>
-              <button className="button-md-blue-solid" type="button">
-                <i className="fi fi-rr-plus" /> Ajouter un smartphone
-              </button>
-            </li>
+            {isAdmin === 1 && (
+              <li>
+                <button className="button-md-blue-solid" type="button">
+                  <i className="fi fi-rr-plus" /> Ajouter un smartphone
+                </button>
+              </li>
+            )}
 
             <li>
               <button
