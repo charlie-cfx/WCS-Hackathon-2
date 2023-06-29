@@ -1,11 +1,38 @@
 /* eslint-disable no-unused-vars */
-import { useState } from "react";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
 import propTypes from "prop-types";
 import SearchOrAdd from "../SearchOrAdd/SearchOrAdd";
+import AuthContext from "../../contexts/AuthContext";
 import "./NewPhoneModal.scss";
 
 export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
+  const AuthValue = useContext(AuthContext);
+  const { userToken } = AuthValue;
   const [formStep, setFormStep] = useState(1);
+  const [accessories, setAccessories] = useState([]);
+  const [states, setStates] = useState([]);
+
+  const Networks = ["3G", "4G", "5G"];
+  const RAM = [1, 2, 3, 4, 6, 8, 12, 16];
+  const Memory = [16, 32, 64, 128, 256, 512, 1024];
+
+  useEffect(() => {
+    const endpoints = [
+      `${import.meta.env.VITE_BACKEND_URL}/accessories`,
+      `${import.meta.env.VITE_BACKEND_URL}/states`,
+    ];
+    Promise.all(
+      endpoints.map((endpoint) =>
+        axios.get(endpoint, {
+          headers: { Authorization: `Bearer ${userToken}` },
+        })
+      )
+    ).then(([{ data: dbAccess }, { data: dbStates }]) => {
+      setAccessories(dbAccess);
+      setStates(dbStates);
+    });
+  }, []);
 
   return (
     <div className="modal new-phone-modal">

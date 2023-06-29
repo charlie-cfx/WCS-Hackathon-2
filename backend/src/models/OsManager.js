@@ -8,7 +8,7 @@ class OsManager extends AbstractManager {
   insert(os) {
     return this.database.query(
       `insert into ${this.table} (OS_name, weighting) values (?,?)`,
-      [os.name, os.screen_size_inch, os.screen_size_cm, os.weighting]
+      [os.name, os.weighting]
     );
   }
 

@@ -48,6 +48,17 @@ export default function Navbar() {
               </button>
             </li>
           )}
+          {isAdmin === 1 && (
+            <li>
+              <button
+                className="button-md-grey-link"
+                type="button"
+                onClick={() => navigate("/users")}
+              >
+                <i className="fi fi-rr-users" /> Gestion utilisateurs
+              </button>
+            </li>
+          )}
           <li>
             <button
               className="button-md-grey-link"
