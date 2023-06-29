@@ -18,6 +18,7 @@ export default function PhoneCard({ phone }) {
     memory,
     accessory_name,
   } = phone;
+
   const phonePrice = "250";
   const priceCategory = "B";
   const modelImage = model_name.split(" ").join("+").toLowerCase();
