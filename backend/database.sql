@@ -209,7 +209,7 @@ VALUES (
 
 INSERT INTO
     `accessory`(name, weighting)
-VALUES ('Aucun', 0), ('Chargeur', 0), ('Ecouteur', 0), ('Verre trempé', 0), ('Chargeur + Ecouteur', 0), ('Chargeur + Verre trempé', 0), ('Ecouteur + Verre trempé', 0), (
+VALUES ('Aucun', 40), ('Chargeur', 25), ('Ecouteur', 25), ('Verre trempé', 30), ('Chargeur + Ecouteur', 40), ('Chargeur + Verre trempé', 35), ('Ecouteur + Verre trempé', 35), (
         'Chargeur + Ecouteur + Verre trempé',
         0
     );
@@ -307,7 +307,7 @@ INSERT INTO `os`
 VALUES (1, 'Android', 1), (2, 'iOS', 2), (3, 'Windows10 mobile', 3), (4, 'HarmonyOS', 4);
 
 INSERT INTO `state`
-VALUES (1, 'DEEE', 0), (2, 'Réparable', 0), (3, 'Bloqué', 0), (4, 'Reconditionnable', 0), (5, 'Reconditionné', 0);
+VALUES (1, 'DEEE', 100), (2, 'Réparable', 50), (3, 'Bloqué', 10), (4, 'Reconditionnable', 5), (5, 'Reconditionné', 0);
 
 INSERT INTO `phone`
 VALUES (1, 2, 1, 1, 8, 0, '4G', 2, 5, 670), (2, 2, 2, 1, 8, 16, '4G', 5, 4, 170), (3, 1, 5, 2, 16, 32, '5G', 4, 5, 580), (4, 4, 11, 1, 16, 48, '5G', 1, 3, 500), (5, 6, 9, 1, 8, 4, '3G', 3, 3, 450);
