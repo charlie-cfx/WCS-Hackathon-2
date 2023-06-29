@@ -237,14 +237,14 @@ VALUES (
         '5.8',
         '14.5',
         2,
-        5
+        11
     ), (3, 'Reno6', '6.4', '16.2', 11, 8), (
         5,
-        'iPhone12',
+        'iPhone 12',
         '6.1',
         '15.4',
         1,
-        3
+        1
     ), (
         6,
         'iPhone 7',
@@ -254,7 +254,7 @@ VALUES (
         7
     ), (
         7,
-        'iPhone13',
+        'iPhone 13',
         '6.1',
         '15.4',
         1,
@@ -266,14 +266,7 @@ VALUES (
         '15.7',
         2,
         3
-    ), (
-        9,
-        'Pixel 6',
-        '6.4',
-        '16.2',
-        6,
-        14
-    ), (10, '9 Pro', '6.7', '17.1', 5, 13), (
+    ), (9, 'Pixel 6', '6.4', '16.2', 6, 1), (10, '9 Pro', '6.7', '17.1', 5, 13), (
         11,
         'Mi 11',
         '6.81',
@@ -313,22 +306,4 @@ INSERT INTO `state`
 VALUES (1, 'DEEE', 100), (2, 'Réparable', 50), (3, 'Bloqué', 10), (4, 'Reconditionnable', 5), (5, 'Reconditionné', 0);
 
 INSERT INTO `phone`
-VALUES (1, 2, 1, 1, 8, 0, '4G', 2, 5, 670), (2, 2, 2, 1, 8, 16, '4G', 5, 4, 170), (3, 1, 5, 2, 16, 32, '5G', 4, 5, 580), (4, 4, 11, 1, 16, 48, '5G', 1, 3, 500), (5, 6, 9, 1, 8, 4, '3G', 3, 3, 450);
-
-INSERT INTO `faq`
-VALUES (
-        `Qu'est-ce qu'un smartphone reconditionné ?`,
-        `Un smartphone reconditionné est un appareil qui a été préalablement utilisé, puis remis à neuf pour être vendu à nouveau. Il a subi des tests, des réparations éventuelles et a été remis en état de fonctionnement. Les smartphones reconditionnés offrent une alternative moins coûteuse par rapport aux nouveaux modèles, tout en garantissant une qualité satisfaisante`
-    ), (
-        `Quelles sont les différences entre un smartphone reconditionné et un smartphone neuf ?`,
-        `La principale différence réside dans le fait qu'un smartphone reconditionné a déjà été utilisé, tandis qu'un smartphone neuf est tout juste sorti de l'emballage et n'a jamais été utilisé. Les smartphones reconditionnés peuvent présenter de légères marques d'usure, mais ils sont généralement testés et réparés pour assurer leur bon fonctionnement, tout comme les smartphones neufs.`
-    ), (
-        `Comment savoir si un smartphone est reconditionnable ?`,
-        `La reconditionnabilité d'un smartphone dépend de son état initial et de la disponibilité des pièces de rechange nécessaires. Un professionnel peut évaluer l'appareil et déterminer s'il est possible de le reconditionner en effectuant les réparations nécessaires. Cependant, il est important de noter que tous les smartphones ne sont pas reconditionnables, surtout s'ils sont très anciens ou s'ils présentent des dommages irréparables.`
-    ), (
-        `Qu'est-ce qu'un smartphone bloqué ?`,
-        `La reconditionnabilité d'un smartphone dépend de son état initial et de la disponibilité des pièces de rechange nécessaires. Un professionnel peut évaluer l'appareil et déterminer s'il est possible de le reconditionner en effectuant les réparations nécessaires. Cependant, il est important de noter que tous les smartphones ne sont pas reconditionnables, surtout s'ils sont très anciens ou s'ils présentent des dommages irréparables.`
-    ), (
-        `Puis-je réparer moi-même mon smartphone ?`,
-        `La réparation d'un smartphone peut varier en fonction de la complexité du problème. Certaines réparations mineures, comme le remplacement d'une batterie ou d'un écran, peuvent être effectuées par des utilisateurs expérimentés à l'aide de tutoriels en ligne et d'outils appropriés. Cependant, pour des réparations plus complexes ou pour éviter d'endommager davantage l'appareil, il est recommandé de faire appel à un professionnel de la réparation de smartphones.`
-    );
+VALUES (1, 2, 1, 1, 8, 128, '5G', 2, 5, 620), (2, 2, 2, 1, 8, 128, '4G', 5, 4, 170), (3, 1, 5, 2, 16, 128, '5G', 4, 5, 700), (4, 4, 11, 1, 16, 256, '5G', 1, 3, 500), (5, 6, 9, 1, 8, 128, '5G', 3, 3, 420);
