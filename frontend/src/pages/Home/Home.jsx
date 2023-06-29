@@ -1,6 +1,17 @@
 import "./Home.scss";
+import React, { useState, useEffect } from "react";
+
+import calculatePhonePrice from "../../components/GeneratePhonePrice/GeneratePhonePrice";
 
 export default function Home() {
+  const [phonePrice, setPhonePrice] = useState("");
+
+  useEffect(() => {
+    // Appeler la fonction calculatePhonePrice et mettre à jour la valeur de phonePrice
+    const price = calculatePhonePrice();
+    setPhonePrice(price);
+  }, []);
+  console.error(phonePrice);
   return (
     <header className="App-header">
       <h1>
