@@ -34,14 +34,14 @@ router.put(
 
 router.put("/adminUser/user/id", verifyToken, verifyAdminRole, user.modifyUser);
 router.put("/user/:id", verifyToken, hashPassword, user.modifyUser);
-router.get("/accessory", verifyToken, accessory.browse);
-router.get("/brand", verifyToken, brand.browse);
-router.get("/color", verifyToken, color.browse);
+router.get("/accessories", verifyToken, accessory.browse);
+router.get("/brands", verifyToken, brand.browse);
+router.get("/colors", verifyToken, color.browse);
 router.get("/faq", verifyToken, faq.browse);
 router.get("/models", verifyToken, models.browse);
 router.get("/os", verifyToken, os.browse);
-router.get("/os_version", verifyToken, osVersion.browse);
+router.get("/os_versions", verifyToken, osVersion.browse);
+router.get("/states", verifyToken, state.browse);
 router.get("/phones", verifyToken, phone.filterPhone);
-router.get("/state", verifyToken, state.browse);
 
 module.exports = router;

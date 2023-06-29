@@ -3,10 +3,12 @@ import "./Navbar.scss";
 import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import AuthContext from "../../contexts/AuthContext";
+import NewPhoneModal from "../NewPhoneModal/NewPhoneModal";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isNewPhoneModalOpen, setIsNewPhoneModalOpen] = useState(false);
 
   const { userInfo } = useContext(AuthContext);
 
@@ -19,11 +21,17 @@ export default function Navbar() {
           <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
         </div>
         <ul className="items">
-          <li>
-            <button className="button-md-blue-solid" type="button">
-              <i className="fi fi-rr-plus" /> Ajouter un smartphone
-            </button>
-          </li>
+          {isAdmin && (
+            <li>
+              <button
+                className="button-md-blue-solid"
+                type="button"
+                onClick={() => setIsNewPhoneModalOpen(true)}
+              >
+                <i className="fi fi-rr-plus" /> Ajouter un smartphone
+              </button>
+            </li>
+          )}
           <li>
             <button
               className="button-md-grey-link"
@@ -71,11 +79,13 @@ export default function Navbar() {
         </nav>
         {isMenuOpen && (
           <ul className="items">
-            <li>
-              <button className="button-md-blue-solid" type="button">
-                <i className="fi fi-rr-plus" /> Ajouter un smartphone
-              </button>
-            </li>
+            {isAdmin && (
+              <li>
+                <button className="button-md-blue-solid" type="button">
+                  <i className="fi fi-rr-plus" /> Ajouter un smartphone
+                </button>
+              </li>
+            )}
 
             <li>
               <button
@@ -105,6 +115,9 @@ export default function Navbar() {
           </ul>
         )}
       </div>
+      {isAdmin && isNewPhoneModalOpen ? (
+        <NewPhoneModal setIsNewPhoneModalOpen={setIsNewPhoneModalOpen} />
+      ) : null}
     </>
   );
 }

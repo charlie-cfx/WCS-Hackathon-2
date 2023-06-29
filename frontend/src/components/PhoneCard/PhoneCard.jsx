@@ -78,11 +78,11 @@ export default function PhoneCard({ phone }) {
       <div className="card-info">
         <div className="card-top">
           <div className="card-info-header">
+            <Badge color={stateColor}>{state}</Badge>
             <h2>
               {brand_name} {model_name}
             </h2>
             {}
-            <Badge color={stateColor}>{state}</Badge>
           </div>
           <ul className="caracteristics">
             <li>
