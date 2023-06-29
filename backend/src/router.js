@@ -28,7 +28,6 @@ router.put("/adminUser/user/id", verifyToken, verifyAdminRole, user.modifyUser);
 
 router.put("/user/:id", verifyToken, hashPassword, user.modifyUser);
 
-router.get("/phones", phone.filterPhone);
-// router.get("/phones", phone.filterPhone);
+router.get("/phones", verifyToken, phone.filterPhone);
 
 module.exports = router;
