@@ -11,6 +11,7 @@ const {
 } = require("./services/auth");
 
 const user = require("./controllers/userControllers");
+const phone = require("./controllers/phoneControllers");
 
 router.post("/user/login", user.authenticationCheck, verifyPassword);
 
@@ -26,5 +27,8 @@ router.put(
 router.put("/adminUser/user/id", verifyToken, verifyAdminRole, user.modifyUser);
 
 router.put("/user/:id", verifyToken, hashPassword, user.modifyUser);
+
+router.get("/phones", phone.filterPhone);
+// router.get("/phones", phone.filterPhone);
 
 module.exports = router;
