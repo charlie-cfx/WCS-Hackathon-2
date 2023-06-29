@@ -64,6 +64,11 @@ const StateManager = require("./Os_versionManager");
 models.state = new StateManager();
 models.state.setDatabase(pool);
 
+const PhoneManager = require("./PhoneManager");
+
+models.phone = new PhoneManager();
+models.phone.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

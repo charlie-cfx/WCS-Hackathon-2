@@ -5,12 +5,15 @@ import "./AuthenticationPage.scss";
 function AuthenticationPage() {
   return (
     <div className="authentication-container">
-      <h1 className="title-connection">
-        <p>Connectez vous à</p>
-        <p>votre compte</p>
-      </h1>
-      <div className="auth">
-        <Authentication />
+      <div className="page-content">
+        <div className="form">
+          <h1>Connectez vous à votre compte</h1>
+
+          <Authentication />
+        </div>
+      </div>
+      <div className="image">
+        <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
       </div>
     </div>
   );
