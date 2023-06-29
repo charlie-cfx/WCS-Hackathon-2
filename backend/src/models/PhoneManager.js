@@ -6,8 +6,8 @@ class PhoneManager extends AbstractManager {
   }
 
   getAllPhonesFiltered(keys, valueQuery) {
-    const query = `SELECT * FROM ${this.table}`;
     const nbOfKeys = keys.length;
+    const query = `SELECT brand_name, brand.weighting as brand_weighting, model_name, screen_size_inch, model.weighting as model_weighting, color_name_en, color_name_fr, OS_name, OS.weighting as OS_weighting, OS_version.version as OS_version, OS_version.weighting as OS_version_weighting, ram, memory, network, accessory.name as accessory_name, accessory.weighting as accessory_weighting, state, state.weighting as state_weighting FROM ${this.table} JOIN brand ON brand.id=${this.table}.brand_id JOIN model ON model.id=${this.table}.model_id JOIN color ON color.id=model.color_id JOIN OS ON OS.id=${this.table}.OS_id JOIN OS_version ON OS_version.id=OS.OS_version_id JOIN accessory ON accessory.id=${this.table}.accessory_id JOIN state ON state.id=${this.table}.state_id`;
     let filters = " WHERE ";
     const dependencies = [];
     if (nbOfKeys) {
