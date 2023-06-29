@@ -1,14 +1,19 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 import "./SideBar.scss";
 
-const SideBar = () => {
+function SideBar() {
   const [search, setSearch] = useState("");
 
   const models = ["Model 3", "Model Y", "Model X", "Model S"];
   const brands = ["Marque 1", "Marque 2", "Marque 3"];
   const states = ["Très bon état", "Bon état", "Mauvais état"];
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    axios.get(
+      `http://localhost:5000/phones?brand_id=1&model_id=1,2,3&state_id=1`
+    );
+  }, []);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -30,7 +35,7 @@ const SideBar = () => {
           </div>
         </label>
       </div>
-      <div className="tags"></div>
+      <div className="tags" />
       <hr />
       <div className="brand">
         <h3>
@@ -40,7 +45,7 @@ const SideBar = () => {
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={brand}>
               <input type="checkbox" id={brand} name={brand} />
-              <div className="checkbox checkbox-red"></div> {brand}
+              <div className="checkbox checkbox-red" /> {brand}
             </label>
           </div>
         ))}
@@ -53,7 +58,7 @@ const SideBar = () => {
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={model}>
               <input type="checkbox" id={model} name={model} />
-              <div className="checkbox checkbox-yellow"></div> {model}
+              <div className="checkbox checkbox-yellow" /> {model}
             </label>
           </div>
         ))}
@@ -66,13 +71,13 @@ const SideBar = () => {
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={state}>
               <input type="checkbox" id={state} name={state} />
-              <div className="checkbox checkbox-green"></div> {state}
+              <div className="checkbox checkbox-green" /> {state}
             </label>
           </div>
         ))}
       </div>
     </div>
   );
-};
+}
 
 export default SideBar;
