@@ -124,8 +124,8 @@ CREATE TABLE IF NOT EXISTS `emmaus_phone`.`phone` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `emmaus_phone`.`FAQ` (
     `id` INT NOT NULL AUTO_INCREMENT,
-    `question` VARCHAR(255) NOT NULL,
-    `answer` VARCHAR(255) NOT NULL,
+    `question` text NOT NULL,
+    `answer` text NOT NULL,
     PRIMARY KEY (`id`)
 ) ENGINE = InnoDB;
 

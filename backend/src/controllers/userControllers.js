@@ -18,6 +18,32 @@ const authenticationCheck = (req, res, next) => {
       res.status(500).send("Error retrieving data from database");
     });
 };
+const read = (req, res) => {
+  models.user
+    .find(req.params.id)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const browse = (req, res) => {
+  models.user
+    .findAll()
+    .then(([rows]) => {
+      res.send(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
 
 const modifyUser = (req, res) => {
   const { id } = req.params;
@@ -58,4 +84,6 @@ module.exports = {
   authenticationCheck,
   modifyUser,
   destroyUser,
+  browse,
+  read,
 };

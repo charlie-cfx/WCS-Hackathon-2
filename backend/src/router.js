@@ -81,6 +81,7 @@ router.delete("/phone/:id", verifyToken, phone.destroy);
 
 router.get("/state", verifyToken, state.browse);
 router.post("/state", verifyToken, state.add);
+router.put("/state/:id", verifyToken, state.edit);
 router.delete("/state/:id", verifyToken, state.destroy);
 
 module.exports = router;
