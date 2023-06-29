@@ -4,6 +4,7 @@ import "./styles/index.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
+import Faq from "./pages/Faq/Faq";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import Users from "./pages/Users/Users";
 
@@ -17,6 +18,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthenticationPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/faq" element={<Faq />} />
             <Route path="/users" element={<Users />} />
           </Routes>
         </Router>
