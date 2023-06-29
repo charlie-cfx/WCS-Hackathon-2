@@ -39,6 +39,31 @@ const UserManager = require("./UserManager");
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
+const AccessoryManager = require("./AccessoryManager");
+
+models.accessory = new AccessoryManager();
+models.accessory.setDatabase(pool);
+
+const ModelManager = require("./ModelManager");
+
+models.model = new ModelManager();
+models.model.setDatabase(pool);
+
+const OsManager = require("./OsManager");
+
+models.os = new OsManager();
+models.os.setDatabase(pool);
+
+const OsVersionManager = require("./Os_versionManager");
+
+models.os_version = new OsVersionManager();
+models.os_version.setDatabase(pool);
+
+const StateManager = require("./Os_versionManager");
+
+models.state = new StateManager();
+models.state.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

@@ -5,5 +5,4 @@ h1 {
   @include text("lg", $weight: 400);
   @include shadow("lg");
   color: var(--error-500);
-
 }
