@@ -1,11 +1,16 @@
 import "./Navbar.scss";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import AuthContext from "../../contexts/AuthContext";
 
 export default function Navbar() {
   const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { userInfo } = useContext(AuthContext);
+
+  const isAdmin = userInfo.is_admin;
 
   return (
     <>
@@ -21,21 +26,23 @@ export default function Navbar() {
           </li>
           <li>
             <button
-              className="button-md-grey-outline"
+              className="button-md-grey-link"
               onClick={() => navigate("/faq")}
               type="button"
             >
               <i className="fi fi-rr-interrogation" /> FAQ
             </button>
           </li>
-          <li>
-            <button className="button-md-grey-outline" type="button">
-              <i className="fi fi-rr-tags" /> Gérer la pondération
-            </button>
-          </li>
+          {isAdmin === 1 && (
+            <li>
+              <button className="button-md-grey-link" type="button">
+                <i className="fi fi-rr-tags" /> Gérer la pondération
+              </button>
+            </li>
+          )}
           <li>
             <button
-              className="button-md-grey-outline"
+              className="button-md-grey-link"
               type="button"
               onClick={() => navigate("/user")}
             >
@@ -70,20 +77,22 @@ export default function Navbar() {
               </button>
             </li>
 
-          <li>
-            <button
-              className="button-md-grey-outline"
-              onClick={() => navigate("/faq")}
-              type="button"
-            >
-              <i className="fi fi-rr-interrogation" /> FAQ
-            </button>
-          </li>
             <li>
-              <button className="button-md-grey-outline" type="button">
-                <i className="fi fi-rr-tags" /> Gérer la pondération
+              <button
+                className="button-md-grey-outline"
+                onClick={() => navigate("/faq")}
+                type="button"
+              >
+                <i className="fi fi-rr-interrogation" /> FAQ
               </button>
             </li>
+            {isAdmin === 1 && (
+              <li>
+                <button className="button-md-grey-link" type="button">
+                  <i className="fi fi-rr-tags" /> Gérer la pondération
+                </button>
+              </li>
+            )}
             <li>
               <button
                 className="button-md-grey-outline"
