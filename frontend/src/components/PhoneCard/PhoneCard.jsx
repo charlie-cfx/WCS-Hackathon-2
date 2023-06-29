@@ -6,6 +6,33 @@ import PropTypes from "prop-types";
 import "./PhoneCard.scss";
 import Badge from "../Badge/Badge";
 
+const getBasePrice = (price, state, accessory) => {
+  const statePrice = Math.round(price - price * state * 0.01);
+  let estimatedPrice = 0;
+  if (statePrice) estimatedPrice = statePrice - accessory;
+  if (estimatedPrice < 0) estimatedPrice = 0;
+  return estimatedPrice;
+};
+
+const definePriceCategory = (price) => {
+  const categoryPriceObject = { price, category: "" };
+  switch (true) {
+    case price < 90:
+      categoryPriceObject.category = "HC";
+      break;
+    case price < 165:
+      categoryPriceObject.category = "C";
+      break;
+    case price < 255:
+      categoryPriceObject.category = "B";
+      break;
+    default:
+      categoryPriceObject.category = "Premium";
+      break;
+  }
+  return categoryPriceObject;
+};
+
 export default function PhoneCard({ phone }) {
   const {
     brand_name,
@@ -17,10 +44,18 @@ export default function PhoneCard({ phone }) {
     ram,
     memory,
     accessory_name,
+    base_price,
+    state_weighting,
+    accessory_weighting,
   } = phone;
-
-  const phonePrice = "250";
-  const priceCategory = "B";
+  const phonePriceCalculated = getBasePrice(
+    base_price,
+    state_weighting,
+    accessory_weighting
+  );
+  const priceCategoryCalculated = definePriceCategory(phonePriceCalculated);
+  const phonePrice = priceCategoryCalculated.price;
+  const priceCategory = priceCategoryCalculated.category;
   const modelImage = model_name.split(" ").join("+").toLowerCase();
   const brandImage = brand_name.toLowerCase();
 
@@ -128,5 +163,8 @@ PhoneCard.propTypes = {
     memory: PropTypes.number.isRequired,
     network: PropTypes.string.isRequired,
     accessory_name: PropTypes.string.isRequired,
+    base_price: PropTypes.number.isRequired,
+    state_weighting: PropTypes.number.isRequired,
+    accessory_weighting: PropTypes.number.isRequired,
   }).isRequired,
 };

@@ -25,8 +25,6 @@ export default function Home() {
     const modelQuery = filters.model.join(",");
     const stateQuery = filters.state.join(",");
 
-    console.info(brandQuery, modelQuery, stateQuery);
-
     const InitialQuery = `${import.meta.env.VITE_BACKEND_URL}/phones?`;
 
     let fullQuery = InitialQuery;
