@@ -7,6 +7,7 @@ import Home from "./pages/Home/Home";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import MyAccount from "./pages/MyAccount/MyAccount";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthenticationPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/user" element={<MyAccount />} />
           </Routes>
         </Router>
       </div>
