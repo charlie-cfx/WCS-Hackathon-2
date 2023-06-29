@@ -37,7 +37,7 @@
         background-color: var(--green-500);
       }
       &-HC {
-        background-color: var(--blue-500);
+        background-color: var(--cyan-500);
       }
       &-Premium {
         background-color: var(--red-500);
@@ -77,12 +77,5 @@
       width: 100%;
       @include button("md", $color: "blue", $style: "solid");
     }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .phone-card {
-    // flex-basis: calc(100% / 3 - (24px / 3) * 2);
-    width: 300px;
   }
 }
