@@ -8,7 +8,7 @@ class PhoneManager extends AbstractManager {
   getAllPhonesFiltered(keys, valueQuery) {
     const nbOfKeys = keys.length;
     console.info(keys, valueQuery);
-    const query = `SELECT ${this.table}.id AS phone_id, brand.id AS brand_id, brand_name, model_name, screen_size_inch, color_name_en, color_name_fr, OS_name, OS_version.version as OS_version, ram, memory, network, accessory.name as accessory_name, accessory.weighting as accessory_weighting, state, state.weighting as state_weighting FROM ${this.table} JOIN brand ON brand.id=${this.table}.brand_id JOIN model ON model.id=${this.table}.model_id JOIN color ON color.id=model.color_id JOIN OS ON OS.id=${this.table}.OS_id JOIN OS_version ON OS_version.id=OS.OS_version_id JOIN accessory ON accessory.id=${this.table}.accessory_id JOIN state ON state.id=${this.table}.state_id`;
+    const query = `SELECT ${this.table}.id AS phone_id, brand.id AS brand_id, brand_name,model.id as model_id, model_name, screen_size_inch, color_name_en, color_name_fr, OS_name, OS_version.version as OS_version, ram, memory, network, accessory.name as accessory_name, accessory.weighting as accessory_weighting, state.id as state_id, state, state.weighting as state_weighting FROM ${this.table} JOIN brand ON brand.id=${this.table}.brand_id JOIN model ON model.id=${this.table}.model_id JOIN color ON color.id=model.color_id JOIN OS ON OS.id=${this.table}.OS_id JOIN OS_version ON OS_version.id=OS.OS_version_id JOIN accessory ON accessory.id=${this.table}.accessory_id JOIN state ON state.id=${this.table}.state_id`;
     let filters = " WHERE ";
     if (nbOfKeys) {
       if (Array.isArray(valueQuery[0])) {
