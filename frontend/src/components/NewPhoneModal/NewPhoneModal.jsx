@@ -11,7 +11,7 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
   const { userToken } = AuthValue;
   const [formStep, setFormStep] = useState(1);
   const [accessories, setAccessories] = useState([]);
-  const [states, setStates] = useState([]);
+  const [inputStates, setInputStates] = useState([]);
 
   const networks = ["3G", "4G", "5G"];
   const RAMs = [1, 2, 3, 4, 6, 8, 12, 16];
@@ -42,7 +42,7 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
       )
     ).then(([{ data: dbAccess }, { data: dbStates }]) => {
       setAccessories(dbAccess);
-      setStates(dbStates);
+      setInputStates(dbStates);
     });
   }, []);
 
@@ -165,6 +165,36 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
               </div>
             </>
           )}
+          {formStep === 3 && (
+            <>
+              <div className="radio-group-features">
+                <p className="label">Accessoires</p>
+                <ul className="radios">
+                  {accessories.map((accessory) => (
+                    <li key={accessory.id}>
+                      <input type="radio" name="accessory" id={accessory.id} />
+                      <label htmlFor={accessory.id}>
+                        <p>{accessory.name}</p>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="radio-group-features">
+                <p className="label">État</p>
+                <ul className="radios">
+                  {inputStates.map((state) => (
+                    <li key={state.state}>
+                      <input type="radio" name="inputState" id={state.state} />
+                      <label htmlFor={state.state}>
+                        <p>{state.state}</p>
+                      </label>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          )}
           <div className="actions">
             {formStep > 1 && (
               <button type="button" className="prev" onClick={prevFormStep}>
@@ -175,6 +205,11 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
             {formStep < 3 && (
               <button type="button" className="next" onClick={nextFormStep}>
                 Suivant <i className="fi fi-rr-angle-small-right" />
+              </button>
+            )}
+            {formStep === 3 && (
+              <button type="button" className="submit">
+                Envoyer <i className="fi fi-rr-paper-plane-top" />
               </button>
             )}
           </div>
