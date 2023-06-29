@@ -27,8 +27,22 @@ export default function Home() {
 
     console.info(brandQuery, modelQuery, stateQuery);
 
+    const InitialQuery = `${import.meta.env.VITE_BACKEND_URL}/phones?`;
+
+    let fullQuery = InitialQuery;
+
+    if (brandQuery) {
+      fullQuery += `&brand_id=${brandQuery}`;
+    }
+    if (modelQuery) {
+      fullQuery += `&model_id=${modelQuery}`;
+    }
+    if (stateQuery) {
+      fullQuery += `&state_id=${stateQuery}`;
+    }
+
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/phones?brand_id=2`, {
+      .get(fullQuery, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
