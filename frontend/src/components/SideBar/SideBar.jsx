@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
 import AuthContext from "../../contexts/AuthContext";
 import "./SideBar.scss";
 
-function SideBar() {
+function SideBar({ filters, setFilters }) {
   // -------------------------------------------context ans states--------------------------------------------------
   const AuthValue = useContext(AuthContext);
   const { userToken } = AuthValue;
@@ -20,12 +21,6 @@ function SideBar() {
   const [brandValues] = useState([]);
   const [modelValues] = useState([]);
   const [stateValues] = useState([]);
-
-  const [filters, setFilters] = useState({
-    model: [],
-    brand: [],
-    state: [],
-  });
 
   // function to add a checked state in each array
   const addCheckedValue = (arr) => {
@@ -56,17 +51,6 @@ function SideBar() {
       setStates(addCheckedValue(dbStates));
     });
   }, []);
-
-  //   dynamic fetch with filters
-  useEffect(() => {
-    const brandQuery = filters.brand.join(",");
-    const modelQuery = filters.model.join(",");
-    const stateQuery = filters.state.join(",");
-
-    console.info(brandQuery, modelQuery, stateQuery);
-
-    // fetch or filter the data here
-  }, [filters]);
 
   //   ------------------------------------------------handlers for inputs------------------------------------------------------
 
@@ -207,5 +191,14 @@ function SideBar() {
     </div>
   );
 }
+
+SideBar.propTypes = {
+  filters: PropTypes.shape({
+    model: PropTypes.arrayOf(PropTypes.string),
+    brand: PropTypes.arrayOf(PropTypes.string),
+    state: PropTypes.arrayOf(PropTypes.string),
+  }).isRequired,
+  setFilters: PropTypes.func.isRequired,
+};
 
 export default SideBar;

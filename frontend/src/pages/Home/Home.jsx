@@ -14,8 +14,19 @@ export default function Home() {
   const { userToken } = useContext(AuthContext);
   const [phonesData, setPhonesData] = useState("");
   const [isDataLoaded, setIsDataLoaded] = useState(false);
+  const [filters, setFilters] = useState({
+    model: [],
+    brand: [],
+    state: [],
+  });
 
   useEffect(() => {
+    const brandQuery = filters.brand.join(",");
+    const modelQuery = filters.model.join(",");
+    const stateQuery = filters.state.join(",");
+
+    console.info(brandQuery, modelQuery, stateQuery);
+
     axios
       .get(`${import.meta.env.VITE_BACKEND_URL}/phones`, {
         headers: {
@@ -32,14 +43,14 @@ export default function Home() {
     if (!userToken) {
       navigate("/");
     }
-  }, [userToken]);
+  }, [userToken, filters]);
 
   return (
     userToken && (
       <div className="home">
         {" "}
         <Navbar />
-        <SideBar />
+        <SideBar filters={filters} setFilters={setFilters} />
         {isDataLoaded ? (
           <div className="cards-list">
             {phonesData.map((phone) => (
