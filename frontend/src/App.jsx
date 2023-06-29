@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
+import Users from "./pages/Users/Users";
 
 import { AuthProvider } from "./contexts/AuthContext";
 
@@ -16,6 +17,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthenticationPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/users" element={<Users />} />
           </Routes>
         </Router>
       </div>
