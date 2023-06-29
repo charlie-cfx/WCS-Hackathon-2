@@ -1,0 +1,89 @@
+@use "../../styles/typography" as *;
+
+body .home {
+  margin-top: 87px;
+}
+
+#navbar {
+  display: none;
+}
+
+#navbar-mobile {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--grey-900);
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid var(--grey-800);
+
+    .logo {
+      img {
+        height: 60px;
+      }
+    }
+    .burger {
+      color: var(--white);
+      background-color: transparent;
+      border: none;
+      padding: 0;
+      margin: 0;
+      font-size: 1.5rem;
+    }
+  }
+  .items {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem;
+    button {
+      background-color: transparent;
+      color: var(--white);
+      border: none;
+      @include text("md");
+      padding: 8px 14px;
+      gap: 8px;
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #navbar-mobile {
+    display: none;
+  }
+
+  #navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--grey-900);
+    padding: 12px 32px;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    gap: clamp(1rem, 2rem, 2rem);
+
+    .logo {
+      img {
+        height: 60px;
+      }
+    }
+    .items {
+      display: flex;
+      gap: clamp(1rem, 1.5rem, 1.5rem);
+      //   gap: 1.5rem;
+      //   flex-wrap: wrap;
+      //   column-gap: 1.5rem;
+      //   row-gap: 0.5rem;
+      //   justify-content: flex-end;
+      button {
+        color: var(--grey-100);
+      }
+    }
+  }
+}
