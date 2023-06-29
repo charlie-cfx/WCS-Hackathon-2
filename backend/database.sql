@@ -86,6 +86,7 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`OS_version` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `version` VARCHAR(45) NOT NULL,
+        `weighting` INT NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
@@ -332,7 +333,7 @@ VALUES (
     );
 
 INSERT INTO `os_version`
-VALUES (1, '12'), (2, '13'), (3, '1.0'), (4, '2.0');
+VALUES (1, '12', 0), (2, '13', 0), (3, '1.0', 0), (4, '2.0', 0);
 
 INSERT INTO `os`
 VALUES (1, 'Android', 0, 1), (2, 'iOS', 0, 2), (3, 'Windows10 mobile', 0, 3), (4, 'HarmonyOS', 0, 4);
