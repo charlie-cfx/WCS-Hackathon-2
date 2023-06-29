@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 
 import Navbar from "../../components/Navbar/Navbar";
 import AuthContext from "../../contexts/AuthContext";
+import UserAccount from "../../components/UserAccount/UserAccount";
 
 import "./MyAccount.scss";
 
@@ -15,7 +16,7 @@ export default function MyAccount() {
   const { id } = userInfo;
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/users/${id}`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/user/${id}`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -37,10 +38,8 @@ export default function MyAccount() {
       <div className="home">
         <Navbar />
         {isDataLoaded ? (
-          <div className="cards-list">
-            {userData.map((user) => (
-              <userAccount key={user.user_id} />
-            ))}
+          <div className="user-info">
+            <UserAccount userInfo={userData} />
           </div>
         ) : (
           <p>Chargement...</p>
