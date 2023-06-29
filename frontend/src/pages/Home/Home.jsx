@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/phones?brand_id=2`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/phones`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
