@@ -1,7 +1,7 @@
 // import { useEffect } from "react";
 // import axios from "axios";
 
-const Users = () => {
+function Users() {
   //   const [users, setUsers] = useState();
 
   //   useEffect(() => {
@@ -15,6 +15,6 @@ const Users = () => {
       <h1>Users</h1>
     </div>
   );
-};
+}
 
 export default Users;

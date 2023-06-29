@@ -49,7 +49,7 @@ export default function Navbar() {
                 type="button"
                 onClick={() => navigate("/users")}
               >
-                <i class="fi fi-rr-users"></i> Gestion utilisateurs
+                <i className="fi fi-rr-users" /> Gestion utilisateurs
               </button>
             </li>
           )}
