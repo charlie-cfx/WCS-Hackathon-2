@@ -9,6 +9,7 @@ import AuthenticationPage from "./pages/AuthenticationPage/AuthenticationPage";
 import Users from "./pages/Users/Users";
 
 import { AuthProvider } from "./contexts/AuthContext";
+import MyAccount from "./pages/MyAccount/MyAccount";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Routes>
             <Route path="/" element={<AuthenticationPage />} />
             <Route path="/home" element={<Home />} />
+            <Route path="/user" element={<MyAccount />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/users" element={<Users />} />
           </Routes>
