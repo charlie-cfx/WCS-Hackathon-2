@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const item = req.body;
+  const model = req.body;
 
   // TODO validations (length, format...)
 
-  item.id = parseInt(req.params.id, 10);
+  model.id = parseInt(req.params.id, 10);
 
   models.model
-    .update(item)
+    .update(model)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,12 +51,12 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const item = req.body;
+  const model = req.body;
 
   // TODO validations (length, format...)
 
   models.model
-    .insert(item)
+    .insert(model)
     .then(([result]) => {
       res.location(`/items/${result.insertId}`).sendStatus(201);
     })
