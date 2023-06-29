@@ -31,7 +31,7 @@ router.put(
   user.modifyUser
 );
 
-router.get("/user", verifyToken, user.browse);
+router.get("/users", verifyToken, user.browse);
 router.get("/user/:id", verifyToken, user.read);
 router.put(
   "/adminUser/user/:id",
