@@ -72,8 +72,8 @@ router.post("/os", verifyToken, os.add);
 router.delete("/os/:id", verifyToken, os.destroy);
 
 router.get("/os_version", verifyToken, osVersion.browse);
-router.post("/os_version", verifyToken, os_version.add);
-router.delete("/os_version/:id", verifyToken, os_version.destroy);
+router.post("/os_version", verifyToken, osVersion.add);
+router.delete("/os_version/:id", verifyToken, osVersion.destroy);
 
 router.get("/phones", verifyToken, phone.filterPhone);
 router.post("/phones", verifyToken, phone.add);
