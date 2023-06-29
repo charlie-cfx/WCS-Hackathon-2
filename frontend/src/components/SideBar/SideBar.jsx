@@ -1,19 +1,31 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useState } from "react";
+// import axios from "axios";
 import "./SideBar.scss";
 
 function SideBar() {
   const [search, setSearch] = useState("");
+  //   const [models, setModels] = useState([]);
+  //   const [brands, setBrands] = useState([]);
+  //   const [states, setStates] = useState([]);
 
-  const models = ["Model 3", "Model Y", "Model X", "Model S"];
-  const brands = ["Marque 1", "Marque 2", "Marque 3"];
-  const states = ["Très bon état", "Bon état", "Mauvais état"];
+  const facticeModels = ["Model 3", "Model Y", "Model X", "Model S"];
+  const facticeBrands = ["Marque 1", "Marque 2", "Marque 3"];
+  const facticeStates = ["Très bon état", "Bon état", "Mauvais état"];
 
-  useEffect(() => {
-    axios.get(
-      `http://localhost:5000/phones?brand_id=1&model_id=1,2,3&state_id=1`
-    );
-  }, []);
+  //   useEffect(() => {
+  //     const endpoints = [
+  //       "http://localhost:5000/models",
+  //       "http://localhost:5000/brand",
+  //       "http://localhost:5000/state",
+  //     ];
+  //     Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
+  //       ([{ data: models }, { data: brand }, { data: state }]) => {
+  //         setModels(models);
+  //         setBrands(brand);
+  //         setStates(state);
+  //       }
+  //     );
+  //   }, []);
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
@@ -41,7 +53,7 @@ function SideBar() {
         <h3>
           <span className="brand-color-red">•</span> Marque
         </h3>
-        {brands.map((brand) => (
+        {facticeBrands.map((brand) => (
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={brand}>
               <input type="checkbox" id={brand} name={brand} />
@@ -54,7 +66,7 @@ function SideBar() {
         <h3>
           <span className="brand-color-yellow">•</span> Modèle
         </h3>
-        {models.map((model) => (
+        {facticeModels.map((model) => (
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={model}>
               <input type="checkbox" id={model} name={model} />
@@ -67,7 +79,7 @@ function SideBar() {
         <h3>
           <span className="brand-color-green">•</span> Etat
         </h3>
-        {states.map((state) => (
+        {facticeStates.map((state) => (
           <div className="input-checkbox input-checkbox--sm">
             <label htmlFor={state}>
               <input type="checkbox" id={state} name={state} />
