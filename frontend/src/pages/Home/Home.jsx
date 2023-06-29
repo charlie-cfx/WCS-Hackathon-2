@@ -16,7 +16,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL}/phones`, {
+      .get(`${import.meta.env.VITE_BACKEND_URL}/phones?brand_id=2`, {
         headers: {
           Authorization: `Bearer ${userToken}`,
         },
@@ -40,7 +40,7 @@ export default function Home() {
         {isDataLoaded ? (
           <div className="cards-list">
             {phonesData.map((phone) => (
-              <PhoneCard key={phone.id} phone={phone} />
+              <PhoneCard key={phone.phone_id} phone={phone} />
             ))}
           </div>
         ) : (

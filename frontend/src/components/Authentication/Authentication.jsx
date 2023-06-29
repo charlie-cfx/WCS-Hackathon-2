@@ -32,7 +32,7 @@ export default function Authentication() {
           setUserInfo(response.data.user);
           navigate("/home");
         } else {
-          console.info(response);
+          setFailAuth(true);
         }
       })
       .catch((error) => {
