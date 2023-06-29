@@ -1,8 +1,10 @@
+import SideBar from "../../components/SideBar/SideBar";
 import "./Home.scss";
 
 export default function Home() {
   return (
-    <header className="App-header">
+    <div className="home">
+      <SideBar />
       <h1>
         Hackathon 2 <i className="fi fi-rr-party-horn" />
       </h1>
@@ -36,6 +38,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </header>
+    </div>
   );
 }
