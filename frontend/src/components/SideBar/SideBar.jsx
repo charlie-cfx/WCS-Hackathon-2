@@ -100,8 +100,6 @@ function SideBar({ filters, setFilters }) {
     states[index].checked = !states[index].checked;
   };
 
-  console.info(filters);
-
   //   ---------------------------------------------------return------------------------------------------------------------
 
   return (
