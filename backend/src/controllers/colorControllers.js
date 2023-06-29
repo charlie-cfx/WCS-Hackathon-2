@@ -36,7 +36,7 @@ const edit = (req, res) => {
   color.id = parseInt(req.params.id, 10);
 
   models.color
-    .update(item)
+    .update(color)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -56,7 +56,7 @@ const add = (req, res) => {
   // TODO validations (length, format...)
 
   models.color
-    .insert(item)
+    .insert(color)
     .then(([result]) => {
       res.location(`/items/${result.insertId}`).sendStatus(201);
     })

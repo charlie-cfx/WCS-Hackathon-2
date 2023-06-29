@@ -30,47 +30,58 @@ pool.getConnection().catch(() => {
 const models = {};
 
 const ItemManager = require("./ItemManager");
+
 models.item = new ItemManager();
 models.item.setDatabase(pool);
 
 const UserManager = require("./UserManager");
+
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
 const AccessoryManager = require("./AccessoryManager");
+
 models.accessory = new AccessoryManager();
 models.accessory.setDatabase(pool);
 
 const ModelManager = require("./ModelManager");
+
 models.model = new ModelManager();
 models.model.setDatabase(pool);
 
 const OsManager = require("./OsManager");
+
 models.os = new OsManager();
 models.os.setDatabase(pool);
 
 const OsVersionManager = require("./Os_versionManager");
+
 models.os_version = new OsVersionManager();
 models.os_version.setDatabase(pool);
 
 const StateManager = require("./Os_versionManager");
+
 models.state = new StateManager();
 models.state.setDatabase(pool);
 
 const PhoneManager = require("./PhoneManager");
+
 models.phone = new PhoneManager();
 models.phone.setDatabase(pool);
 
 const BrandManager = require("./PhoneManager");
+
 models.brand = new BrandManager();
 models.brand.setDatabase(pool);
 
 const ColorManager = require("./ColorManager");
+
 models.color = new ColorManager();
 models.color.setDatabase(pool);
 
-const faqManager = require("./faqManager");
-models.faq = new faqManager();
+const FaqManager = require("./FaqManager");
+
+models.faq = new FaqManager();
 models.faq.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,

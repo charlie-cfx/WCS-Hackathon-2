@@ -1,6 +1,6 @@
 const AbstractManager = require("./AbstractManager");
 
-class BrandManager extends AbstractManager {
+class brandManager extends AbstractManager {
   constructor() {
     super({ table: "brand" });
   }

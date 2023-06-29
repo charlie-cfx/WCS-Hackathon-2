@@ -12,7 +12,7 @@ const {
 
 const user = require("./controllers/userControllers");
 const phone = require("./controllers/phoneControllers");
-const models = require("./controllers/modelControllers");
+const models = require("./controllers/modelController");
 const brand = require("./controllers/brandControllers");
 const state = require("./controllers/stateControllers");
 const color = require("./controllers/colorControllers");

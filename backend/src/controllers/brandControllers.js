@@ -36,7 +36,7 @@ const edit = (req, res) => {
   brand.id = parseInt(req.params.id, 10);
 
   models.brand
-    .update(item)
+    .update(brand)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -56,7 +56,7 @@ const add = (req, res) => {
   // TODO validations (length, format...)
 
   models.brand
-    .insert(item)
+    .insert(brand)
     .then(([result]) => {
       res.location(`/items/${result.insertId}`).sendStatus(201);
     })
