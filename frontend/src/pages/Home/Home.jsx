@@ -14,7 +14,7 @@ export default function Home() {
     if (!userToken) {
       navigate("/");
     }
-  });
+  }, [userToken]);
 
   return (
     userToken && (
