@@ -29,6 +29,7 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
               placeholder="Rechercher une marque"
               id="brand"
               query="brands"
+              field="brand_name"
             />
             <SearchOrAdd
               label="Modèle du smartphone"
@@ -36,6 +37,7 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
               placeholder="Rechercher un modèle"
               id="model"
               query="models"
+              field="model_name"
             />
           </div>
         </div>
