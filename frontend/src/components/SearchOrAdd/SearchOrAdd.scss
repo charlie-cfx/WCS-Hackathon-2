@@ -40,6 +40,7 @@
       overflow: hidden;
       white-space: nowrap;
       width: 100%;
+      text-transform: capitalize;
 
       &:hover {
         background-color: var(--blue-100);
