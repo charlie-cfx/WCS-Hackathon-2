@@ -119,6 +119,7 @@ PhoneCard.propTypes = {
     model_name: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     color_name_en: PropTypes.string.isRequired,
+    color_name_fr: PropTypes.string.isRequired,
     screen_size_inch: PropTypes.string.isRequired,
     OS_name: PropTypes.string.isRequired,
     ram: PropTypes.string.isRequired,
