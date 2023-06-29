@@ -47,15 +47,15 @@ router.delete(
   user.destroyUser
 );
 
-router.get("/accessory", verifyToken, accessory.browse);
+router.get("/accessories", verifyToken, accessory.browse);
 router.post("/accessory", verifyToken, accessory.add);
 router.delete("/accssory/:id", verifyToken, accessory.destroy);
 
-router.get("/brand", verifyToken, brand.browse);
+router.get("/brands", verifyToken, brand.browse);
 router.post("/brand", verifyToken, brand.add);
 router.delete("/brand/:id", verifyToken, brand.destroy);
 
-router.get("/color", verifyToken, color.browse);
+router.get("/colors", verifyToken, color.browse);
 router.post("/color", verifyToken, color.add);
 router.delete("/color/:id", verifyToken, color.destroy);
 
@@ -78,7 +78,7 @@ router.delete("/os_version/:id", verifyToken, osVersion.destroy);
 router.get("/phones", verifyToken, phone.filterPhone);
 router.delete("/phone/:id", verifyToken, phone.destroy);
 
-router.get("/state", verifyToken, state.browse);
+router.get("/states", verifyToken, state.browse);
 router.post("/state", verifyToken, state.add);
 router.put("/state/:id", verifyToken, state.edit);
 router.delete("/state/:id", verifyToken, state.destroy);
