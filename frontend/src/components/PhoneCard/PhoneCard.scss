@@ -84,7 +84,6 @@
       width: 100%;
       h2 {
         @include title("xs", $weight: 500);
-        word-wrap: break-word;
         text-wrap: balance;
       }
       .badge{
