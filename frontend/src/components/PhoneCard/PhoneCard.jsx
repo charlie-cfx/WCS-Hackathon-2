@@ -92,8 +92,9 @@ export default function PhoneCard({ phone }) {
               <span className="bold">Mémoire RAM :</span> {ram} Go
             </li>
             <li>
-              <span className="bold">Écran :</span> {screen_size_inch}" soit{" "}
-              {screeSizeCm} cm
+              <span className="bold">Écran :</span>{" "}
+              {`${screen_size_inch}" soit 
+              ${screeSizeCm} cm`}
             </li>
             <li>
               <span className="bold">Couleur :</span>
