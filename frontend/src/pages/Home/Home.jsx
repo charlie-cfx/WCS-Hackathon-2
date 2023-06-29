@@ -1,7 +1,9 @@
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import Navbar from "../../components/Navbar/Navbar";
+import PhoneCard from "../../components/PhoneCard/PhoneCard";
 import SideBar from "../../components/SideBar/SideBar";
 import AuthContext from "../../contexts/AuthContext";
 
@@ -10,8 +12,23 @@ import "./Home.scss";
 export default function Home() {
   const navigate = useNavigate();
   const { userToken } = useContext(AuthContext);
+  const [phonesData, setPhonesData] = useState("");
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   useEffect(() => {
+    axios
+      .get(`${import.meta.env.VITE_BACKEND_URL}/phones`, {
+        headers: {
+          Authorization: `Bearer ${userToken}`,
+        },
+      })
+      .then((response) => {
+        setPhonesData(response.data);
+        setIsDataLoaded(true);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
     if (!userToken) {
       navigate("/");
     }
@@ -23,39 +40,15 @@ export default function Home() {
         {" "}
         <Navbar />
         <SideBar />
-        {/* <h1>
-          Hackathon 2 <i className="fi fi-rr-party-horn" />
-        </h1>
-        <div className="input-line">
-          <div className="input-field">
-            <label htmlFor="search">Rechercher</label>
-            <div className="input">
-              <i className="fi fi-rr-search" />
-              <input type="text" placeholder="Search" id="search" />
-            </div>
+        {isDataLoaded ? (
+          <div className="cards-list">
+            {phonesData.map((phone) => (
+              <PhoneCard key={phone.id} phone={phone} />
+            ))}
           </div>
-          <div className="input-dropdown">
-            <select>
-              <option value="1">Option 1</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </select>
-          </div>
-
-          <div className="input-switch input-switch--sm">
-            <label htmlFor="switch">
-              <input type="checkbox" name="" id="switch" />
-              <div className="toggle-switch" />
-            </label>
-          </div>
-          <div className="input-field">
-            <label htmlFor="search">Rechercher</label>
-            <div className="input">
-              <i className="fi fi-rr-search" />
-              <input type="text" placeholder="Search" id="search" />
-            </div>
-          </div>
-        </div> */}
+        ) : (
+          <p>Chargement...</p>
+        )}
       </div>
     )
   );

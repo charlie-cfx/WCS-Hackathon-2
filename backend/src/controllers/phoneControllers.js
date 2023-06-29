@@ -6,7 +6,6 @@ const filterPhone = (req, res) => {
   const valueQuery = values.map((value) =>
     value.includes(",") ? value.split(",") : value
   );
-  console.info(keys, valueQuery);
   models.phone
     .getAllPhonesFiltered(keys, valueQuery)
     .then(([result]) => {
