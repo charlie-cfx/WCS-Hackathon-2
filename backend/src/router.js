@@ -21,6 +21,7 @@ const phone = require("./controllers/phoneControllers");
 const state = require("./controllers/stateControllers");
 const user = require("./controllers/userControllers");
 
+router.post("/user/login", user.authenticationCheck, verifyPassword);
 router.put(
   "/adminUser/:id",
   verifyToken,
@@ -39,7 +40,7 @@ router.put(
   user.modifyUser
 );
 router.put("/user/:id", verifyToken, hashPassword, checkId, user.modifyUser);
-router.post("/user/login", user.authenticationCheck, verifyPassword);
+
 router.delete(
   "/adminUser/user/:id",
   verifyToken,
@@ -49,7 +50,7 @@ router.delete(
 
 router.get("/accessories", verifyToken, accessory.browse);
 router.post("/accessory", verifyToken, accessory.add);
-router.delete("/accssory/:id", verifyToken, accessory.destroy);
+router.delete("/accessory/:id", verifyToken, accessory.destroy);
 
 router.get("/brands", verifyToken, brand.browse);
 router.post("/brand", verifyToken, brand.add);
@@ -65,7 +66,7 @@ router.delete("/faq/:id", verifyToken, faq.destroy);
 
 router.get("/models", verifyToken, models.browse);
 router.post("/models", verifyToken, models.add);
-router.delete("/models/:id", verifyToken, accessory.destroy);
+router.delete("/models/:id", verifyToken, models.destroy);
 
 router.get("/os", verifyToken, os.browse);
 router.post("/os", verifyToken, os.add);
@@ -76,8 +77,8 @@ router.post("/os_version", verifyToken, osVersion.add);
 router.delete("/os_version/:id", verifyToken, osVersion.destroy);
 
 router.get("/phones", verifyToken, phone.filterPhone);
-// router.post("/phones", verifyToken, phone.add);
 router.delete("/phone/:id", verifyToken, phone.destroy);
+router.post("/phone", verifyToken, phone.add);
 
 router.get("/states", verifyToken, state.browse);
 router.post("/state", verifyToken, state.add);
