@@ -36,8 +36,8 @@ function SideBar({ filters, setFilters }) {
   useEffect(() => {
     const endpoints = [
       `${import.meta.env.VITE_BACKEND_URL}/models`,
-      `${import.meta.env.VITE_BACKEND_URL}/brand`,
-      `${import.meta.env.VITE_BACKEND_URL}/state`,
+      `${import.meta.env.VITE_BACKEND_URL}/brands`,
+      `${import.meta.env.VITE_BACKEND_URL}/states`,
     ];
     Promise.all(
       endpoints.map((endpoint) =>

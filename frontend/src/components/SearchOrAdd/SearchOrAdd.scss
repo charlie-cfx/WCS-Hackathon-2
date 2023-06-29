@@ -1,0 +1,50 @@
+@use "../../styles/typography" as *;
+@use "../../styles/button" as *;
+@use "../../styles/shadows" as *;
+
+.search-or-add {
+  position: relative;
+  .input {
+    height: fit-content;
+    padding: 8px 8px 8px 16px;
+    button {
+      @include button("md", $color: "blue", $style: "solid");
+      min-width: fit-content;
+    }
+  }
+  .results {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% + 0.5rem);
+    left: 0;
+    right: 0;
+    background-color: var(--white);
+    border: 1px solid var(--grey-200);
+    border-radius: 0.5rem;
+    padding: 1rem;
+    @include shadow("lg");
+    @include text("md");
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: center;
+
+    li {
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 0.5rem;
+      transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.3s;
+
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+
+      &:hover {
+        background-color: var(--blue-100);
+        color: var(--blue-800);
+      }
+    }
+  }
+}
