@@ -209,8 +209,11 @@ VALUES (
 
 INSERT INTO
     `accessory`(name, weighting)
-VALUES ('Aucun', 40), ('Chargeur', 25), ('Ecouteur', 25), ('Verre trempé', 30), ('Chargeur + Ecouteur', 40), ('Chargeur + Verre trempé', 35), ('Ecouteur + Verre trempé', 35), (
-        'Chargeur + Ecouteur + Verre trempé',
+VALUES ('Aucun', 40), ('Chargeur', 25), ('Écouteurs', 25), ('Verre trempé', 30), ('Chargeur + Écouteurs', 40), ('Chargeur + Verre trempé', 35), (
+        'Écouteurs + Verre trempé',
+        35
+    ), (
+        'Chargeur + Écouteurs + Verre trempé',
         0
     );
 
