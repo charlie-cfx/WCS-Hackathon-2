@@ -49,7 +49,7 @@ router.delete(
 
 router.get("/accessories", verifyToken, accessory.browse);
 router.post("/accessory", verifyToken, accessory.add);
-router.delete("/accssory/:id", verifyToken, accessory.destroy);
+router.delete("/accessory/:id", verifyToken, accessory.destroy);
 
 router.get("/brands", verifyToken, brand.browse);
 router.post("/brand", verifyToken, brand.add);
@@ -77,6 +77,7 @@ router.delete("/os_version/:id", verifyToken, osVersion.destroy);
 
 router.get("/phones", verifyToken, phone.filterPhone);
 router.delete("/phone/:id", verifyToken, phone.destroy);
+router.post("/phone", verifyToken, phone.add);
 
 router.get("/states", verifyToken, state.browse);
 router.post("/state", verifyToken, state.add);
