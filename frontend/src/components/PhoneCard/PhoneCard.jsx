@@ -12,6 +12,7 @@ export default function PhoneCard({ phone }) {
     model_name,
     state,
     color_name_en,
+    color_name_fr,
     screen_size_inch,
     ram,
     memory,
@@ -83,20 +84,26 @@ export default function PhoneCard({ phone }) {
             {}
             <Badge color={stateColor}>{state}</Badge>
           </div>
-          <div className="caracteristics">
-            <p>
-              <span>Mémoire interne :</span> {memory} Go
-            </p>
-            <p>
-              <span>Mémoire RAM :</span> {ram} Go
-            </p>
-            <p>
-              <span>Écran :</span> {screen_size_inch}" soit {screeSizeCm} cm
-            </p>
-            <p>
-              <span>Accessoires :</span> {accessory_name}
-            </p>
-          </div>
+          <ul className="caracteristics">
+            <li>
+              <span className="bold">Mémoire interne :</span> {memory} Go
+            </li>
+            <li>
+              <span className="bold">Mémoire RAM :</span> {ram} Go
+            </li>
+            <li>
+              <span className="bold">Écran :</span> {screen_size_inch}" soit{" "}
+              {screeSizeCm} cm
+            </li>
+            <li>
+              <span className="bold">Couleur :</span>
+              <span className="capitalize"> {color_name_fr}</span>
+            </li>
+            <li>
+              <span className="bold">Accessoires :</span>
+              <span className="capitalize"> {accessory_name}</span>
+            </li>
+          </ul>
         </div>
         <button className="more-info" type="button">
           En savoir plus
@@ -112,10 +119,10 @@ PhoneCard.propTypes = {
     model_name: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
     color_name_en: PropTypes.string.isRequired,
-    screen_size_inch: PropTypes.number.isRequired,
+    screen_size_inch: PropTypes.string.isRequired,
     OS_name: PropTypes.string.isRequired,
-    ram: PropTypes.number.isRequired,
-    memory: PropTypes.number.isRequired,
+    ram: PropTypes.string.isRequired,
+    memory: PropTypes.string.isRequired,
     network: PropTypes.string.isRequired,
     accessory_name: PropTypes.string.isRequired,
   }).isRequired,

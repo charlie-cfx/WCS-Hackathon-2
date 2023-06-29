@@ -94,8 +94,13 @@
       align-items: flex-start;
       color: var(--grey-500);
       span {
-        @include text("md", $weight: 600);
-        color: var(--grey-600);
+        &.bold {
+          @include text("md", $weight: 600);
+          color: var(--grey-600);
+        }
+        &.capitalize {
+          text-transform: capitalize;
+        }
       }
     }
     .more-info {
