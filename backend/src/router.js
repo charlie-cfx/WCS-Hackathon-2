@@ -49,7 +49,7 @@ router.delete(
 
 router.get("/accessories", verifyToken, accessory.browse);
 router.post("/accessory", verifyToken, accessory.add);
-router.delete("/accssory/:id", verifyToken, accessory.destroy);
+router.delete("/accessory/:id", verifyToken, accessory.destroy);
 
 router.get("/brands", verifyToken, brand.browse);
 router.post("/brand", verifyToken, brand.add);

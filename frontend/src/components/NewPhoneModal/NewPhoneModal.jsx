@@ -40,6 +40,44 @@ export default function NewPhoneModal({ setIsNewPhoneModalOpen }) {
               field="model_name"
             />
           </div>
+
+          <div className="input-line">
+            <SearchOrAdd
+              label="Couleur du smartphone"
+              icon="search"
+              placeholder="Rechercher la couleur"
+              id="color"
+              query="colors"
+              field="color_name_fr"
+            />
+          </div>
+
+          <div className="radio-group-os">
+            <p className="label">OS</p>
+            <div className="radios">
+              <input type="radio" name="os" id="iOS" />
+              <label htmlFor="iOS">
+                <p>
+                  <i className="fi fi-brands-apple" />
+                  iOS
+                </p>
+              </label>
+              <input type="radio" name="os" id="android" />
+              <label htmlFor="android">
+                <p>Android</p>
+              </label>
+              <input type="radio" name="os" id="HarmonyOS" />
+              <label htmlFor="HarmonyOS">
+                <p>HarmonyOS</p>
+              </label>
+            </div>
+          </div>
+
+          <div className="actions">
+            <button type="button" className="next">
+              Suivant <i className="fi fi-rr-angle-small-right" />
+            </button>
+          </div>
         </div>
       </div>
     </div>
