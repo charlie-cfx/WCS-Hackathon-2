@@ -23,7 +23,7 @@ export default function Home() {
         {" "}
         <Navbar />
         <SideBar />
-        <h1>
+        {/* <h1>
           Hackathon 2 <i className="fi fi-rr-party-horn" />
         </h1>
         <div className="input-line">
@@ -55,7 +55,7 @@ export default function Home() {
               <input type="text" placeholder="Search" id="search" />
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     )
   );

@@ -46,47 +46,55 @@ function SideBar() {
             />
           </div>
         </label>
+        <div className="tags" />
       </div>
-      <div className="tags" />
+
       <hr />
       <div className="brand">
         <h3>
           <span className="brand-color-red">•</span> Marque
         </h3>
-        {facticeBrands.map((brand) => (
-          <div className="input-checkbox input-checkbox--sm">
-            <label htmlFor={brand}>
-              <input type="checkbox" id={brand} name={brand} />
-              <div className="checkbox checkbox-red" /> {brand}
-            </label>
-          </div>
-        ))}
+        <div className="brand-inputs">
+          {facticeBrands.map((brand) => (
+            <div className="input-checkbox input-checkbox--sm">
+              <label htmlFor={brand}>
+                <input type="checkbox" id={brand} name={brand} />
+                <div className="checkbox checkbox-red" /> {brand}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="model">
         <h3>
           <span className="brand-color-yellow">•</span> Modèle
         </h3>
-        {facticeModels.map((model) => (
-          <div className="input-checkbox input-checkbox--sm">
-            <label htmlFor={model}>
-              <input type="checkbox" id={model} name={model} />
-              <div className="checkbox checkbox-yellow" /> {model}
-            </label>
-          </div>
-        ))}
+        <div className="model-inputs">
+          {" "}
+          {facticeModels.map((model) => (
+            <div className="input-checkbox input-checkbox--sm">
+              <label htmlFor={model}>
+                <input type="checkbox" id={model} name={model} />
+                <div className="checkbox checkbox-yellow" /> {model}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
       <div className="state">
         <h3>
           <span className="brand-color-green">•</span> Etat
         </h3>
-        {facticeStates.map((state) => (
-          <div className="input-checkbox input-checkbox--sm">
-            <label htmlFor={state}>
-              <input type="checkbox" id={state} name={state} />
-              <div className="checkbox checkbox-green" /> {state}
-            </label>
-          </div>
-        ))}
+        <div className="state-inputs">
+          {facticeStates.map((state) => (
+            <div className="input-checkbox input-checkbox--sm">
+              <label htmlFor={state}>
+                <input type="checkbox" id={state} name={state} />
+                <div className="checkbox checkbox-green" /> {state}
+              </label>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
