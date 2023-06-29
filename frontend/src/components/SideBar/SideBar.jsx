@@ -1,35 +1,124 @@
-import { useState } from "react";
-// import axios from "axios";
+import { useState, useEffect, useContext } from "react";
+import axios from "axios";
+import AuthContext from "../../contexts/AuthContext";
 import "./SideBar.scss";
 
 function SideBar() {
+  // -------------------------------------------context ans states--------------------------------------------------
+  const AuthValue = useContext(AuthContext);
+  const { userToken } = AuthValue;
+
+  // state to manage the search
   const [search, setSearch] = useState("");
-  //   const [models, setModels] = useState([]);
-  //   const [brands, setBrands] = useState([]);
-  //   const [states, setStates] = useState([]);
 
-  const facticeModels = ["Model 3", "Model Y", "Model X", "Model S"];
-  const facticeBrands = ["Marque 1", "Marque 2", "Marque 3"];
-  const facticeStates = ["Très bon état", "Bon état", "Mauvais état"];
+  // states to store the checkboxes fetched data
+  const [models, setModels] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [states, setStates] = useState([]);
 
-  //   useEffect(() => {
-  //     const endpoints = [
-  //       "http://localhost:5000/models",
-  //       "http://localhost:5000/brand",
-  //       "http://localhost:5000/state",
-  //     ];
-  //     Promise.all(endpoints.map((endpoint) => axios.get(endpoint))).then(
-  //       ([{ data: models }, { data: brand }, { data: state }]) => {
-  //         setModels(models);
-  //         setBrands(brand);
-  //         setStates(state);
-  //       }
-  //     );
-  //   }, []);
+  // state to get all the inputs values and set them in the dynamic fetch
+  const [brandValues] = useState([]);
+  const [modelValues] = useState([]);
+  const [stateValues] = useState([]);
+
+  const [filters, setFilters] = useState({
+    model: [],
+    brand: [],
+    state: [],
+  });
+
+  // function to add a checked state in each array
+  const addCheckedValue = (arr) => {
+    const newArr = arr.map((item) => {
+      return { ...item, checked: false };
+    });
+    return newArr;
+  };
+
+  //   ----------------------------------------------useEffects----------------------------------------------------------
+
+  //   fetch the data for the checkboxes
+  useEffect(() => {
+    const endpoints = [
+      `${import.meta.env.VITE_BACKEND_URL}/models`,
+      `${import.meta.env.VITE_BACKEND_URL}/brand`,
+      `${import.meta.env.VITE_BACKEND_URL}/state`,
+    ];
+    Promise.all(
+      endpoints.map((endpoint) =>
+        axios.get(endpoint, {
+          headers: { Authorization: `Bearer ${userToken}` },
+        })
+      )
+    ).then(([{ data: dbModels }, { data: dbBrands }, { data: dbStates }]) => {
+      setModels(addCheckedValue(dbModels));
+      setBrands(addCheckedValue(dbBrands));
+      setStates(addCheckedValue(dbStates));
+    });
+  }, []);
+
+  //   dynamic fetch with filters
+  useEffect(() => {
+    const brandQuery = filters.brand.join(",");
+    const modelQuery = filters.model.join(",");
+    const stateQuery = filters.state.join(",");
+
+    console.info(brandQuery, modelQuery, stateQuery);
+
+    // fetch or filter the data here
+  }, [filters]);
+
+  //   ------------------------------------------------handlers for inputs------------------------------------------------------
 
   const handleSearch = (event) => {
     setSearch(event.target.value);
   };
+
+  const handleBrandChange = (event, index) => {
+    if (event.target.checked) {
+      brandValues.push(event.target.value);
+    } else {
+      brandValues.splice(brandValues.indexOf(event.target.value), 1);
+    }
+    setFilters({
+      ...filters,
+      brand: brandValues,
+    });
+
+    brands[index].checked = !brands[index].checked;
+  };
+
+  const handleModelChange = (event, index) => {
+    if (event.target.checked) {
+      modelValues.push(event.target.value);
+    } else {
+      modelValues.splice(modelValues.indexOf(event.target.value), 1);
+    }
+    setFilters({
+      ...filters,
+      model: modelValues,
+    });
+
+    models[index].checked = !models[index].checked;
+  };
+
+  const handleStateChange = (event, index) => {
+    if (event.target.checked) {
+      stateValues.push(event.target.value);
+    } else {
+      stateValues.splice(stateValues.indexOf(event.target.value), 1);
+    }
+    setFilters({
+      ...filters,
+      state: stateValues,
+    });
+
+    states[index].checked = !states[index].checked;
+  };
+
+  console.info(filters);
+
+  //   ---------------------------------------------------return------------------------------------------------------------
 
   return (
     <div className="side-bar">
@@ -55,11 +144,18 @@ function SideBar() {
           <span className="brand-color-red">•</span> Marque
         </h3>
         <div className="brand-inputs">
-          {facticeBrands.map((brand) => (
-            <div className="input-checkbox input-checkbox--sm">
-              <label htmlFor={brand}>
-                <input type="checkbox" id={brand} name={brand} />
-                <div className="checkbox checkbox-red" /> {brand}
+          {brands.map((brand, index) => (
+            <div className="input-checkbox input-checkbox--sm" key={brand.id}>
+              <label htmlFor={brand.brand_name}>
+                <input
+                  type="checkbox"
+                  onChange={(e) => handleBrandChange(e, index)}
+                  id={brand.brand_name}
+                  name={brand.brand_name}
+                  value={brand.id}
+                  checked={brand.checked}
+                />
+                <div className="checkbox checkbox-red" /> {brand.brand_name}
               </label>
             </div>
           ))}
@@ -71,11 +167,17 @@ function SideBar() {
         </h3>
         <div className="model-inputs">
           {" "}
-          {facticeModels.map((model) => (
-            <div className="input-checkbox input-checkbox--sm">
-              <label htmlFor={model}>
-                <input type="checkbox" id={model} name={model} />
-                <div className="checkbox checkbox-yellow" /> {model}
+          {models.map((model, index) => (
+            <div className="input-checkbox input-checkbox--sm" key={model.id}>
+              <label htmlFor={model.model_name}>
+                <input
+                  type="checkbox"
+                  id={model.model_name}
+                  name={model.name}
+                  value={model.id}
+                  onChange={(e) => handleModelChange(e, index)}
+                />
+                <div className="checkbox checkbox-yellow" /> {model.model_name}
               </label>
             </div>
           ))}
@@ -83,14 +185,20 @@ function SideBar() {
       </div>
       <div className="state">
         <h3>
-          <span className="brand-color-green">•</span> Etat
+          <span className="brand-color-green">•</span> État
         </h3>
         <div className="state-inputs">
-          {facticeStates.map((state) => (
-            <div className="input-checkbox input-checkbox--sm">
-              <label htmlFor={state}>
-                <input type="checkbox" id={state} name={state} />
-                <div className="checkbox checkbox-green" /> {state}
+          {states.map((state, index) => (
+            <div className="input-checkbox input-checkbox--sm" key={state.id}>
+              <label htmlFor={state.state}>
+                <input
+                  type="checkbox"
+                  id={state.state}
+                  name={state.state}
+                  value={state.id}
+                  onChange={(e) => handleStateChange(e, index)}
+                />
+                <div className="checkbox checkbox-green" /> {state.state}
               </label>
             </div>
           ))}
