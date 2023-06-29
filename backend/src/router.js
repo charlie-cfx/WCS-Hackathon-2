@@ -39,7 +39,8 @@ router.put(
   verifyAdminRole,
   user.modifyUser
 );
-router.put("/user/:id", verifyToken, hashPassword, user.modifyUser);
+router.put("/user/:id", verifyToken, hashPassword, checkId, user.modifyUser);
+
 router.delete(
   "/adminUser/user/:id",
   verifyToken,
