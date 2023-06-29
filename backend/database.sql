@@ -2,11 +2,17 @@
 
 -- Schema emmaus_phone
 
+DROP DATABASE IF EXISTS `emmaus_phone`;
+
+CREATE DATABASE `emmaus_phone`;
+
+USE `emmaus_phone`;
+
 -- -----------------------------------------------------
 
-CREATE SCHEMA IF NOT EXISTS `emmaus_phone` DEFAULT CHARACTER SET utf8;
+-- CREATE SCHEMA IF NOT EXISTS `emmaus_phone` DEFAULT CHARACTER SET utf8;
 
-USE `emmaus_phone` ;
+-- USE `emmaus_phone` ;
 
 -- -----------------------------------------------------
 
@@ -36,7 +42,6 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`brand` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `brand_name` VARCHAR(100) NOT NULL,
-        `weighting` INT NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
@@ -66,7 +71,6 @@ CREATE TABLE
         `model_name` VARCHAR(100) NOT NULL,
         `screen_size_inch` VARCHAR(45) NOT NULL,
         `screen_size_cm` VARCHAR(45) NOT NULL,
-        `weighting` INT NOT NULL,
         `brand_id` INT NOT NULL,
         `color_id` INT NOT NULL,
         PRIMARY KEY (`id`, `brand_id`, `color_id`),
@@ -86,7 +90,6 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`OS_version` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `version` VARCHAR(45) NOT NULL,
-        `weighting` INT NOT NULL,
         PRIMARY KEY (`id`)
     ) ENGINE = InnoDB;
 
@@ -100,7 +103,6 @@ CREATE TABLE
     IF NOT EXISTS `emmaus_phone`.`OS` (
         `id` INT NOT NULL AUTO_INCREMENT,
         `OS_name` VARCHAR(45) NOT NULL,
-        `weighting` INT NOT NULL,
         `OS_version_id` INT NOT NULL,
         PRIMARY KEY (`id`, `OS_version_id`),
         INDEX `fk_OS_OS_version1_idx` (`OS_version_id` ASC) VISIBLE,
@@ -152,6 +154,7 @@ CREATE TABLE
         `network` VARCHAR(45) NOT NULL,
         `accessory_id` INT NOT NULL,
         `state_id` INT NOT NULL,
+        `base_price` INT NOT NULL,
         PRIMARY KEY (
             `id`,
             `brand_id`,
@@ -212,7 +215,7 @@ VALUES ('Aucun', 0), ('Chargeur', 0), ('Ecouteur', 0), ('Verre trempé', 0), ('C
     );
 
 INSERT INTO `brand`
-VALUES (1, 'Apple', 0), (2, 'Samsung', 0), (3, 'Huawei', 0), (4, 'Xiaomi', 0), (5, 'OnePlus', 0), (6, 'Google', 0), (7, 'Sony', 0), (8, 'LG', 0), (9, 'Motorola', 0), (10, 'Nokia', 0), (11, 'Oppo', 0), (12, 'Vivo', 0), (13, 'Realme', 0), (14, 'HTC', 0), (15, 'Asus', 0), (16, 'Blackberry', 0), (17, 'Alcatel', 0), (18, 'ZTE', 0), (19, 'Meizu', 0);
+VALUES (1, 'Apple'), (2, 'Samsung'), (3, 'Huawei'), (4, 'Xiaomi'), (5, 'OnePlus'), (6, 'Google'), (7, 'Sony'), (8, 'LG'), (9, 'Motorola'), (10, 'Nokia'), (11, 'Oppo'), (12, 'Vivo'), (13, 'Realme'), (14, 'HTC'), (15, 'Asus'), (16, 'Blackberry'), (17, 'Alcatel'), (18, 'ZTE'), (19, 'Meizu');
 
 INSERT INTO `color`
 VALUES (1, 'black', 'noir'), (2, 'white', 'blanc'), (3, 'silver', 'argent'), (4, 'gray', 'gris'), (5, 'gold', 'or'), (6, 'rose', 'rose'), (7, 'blue', 'bleu'), (8, 'red', 'rouge'), (9, 'green', 'vert'), (10, 'purple', 'violet'), (11, 'yellow', 'jaune'), (12, 'blue sky', 'bleu ciel'), (13, 'bronze', 'bronze'), (14, 'brown', 'marron');
@@ -223,7 +226,6 @@ VALUES (
         'Galaxy S23',
         '5.8',
         '14.5',
-        0,
         2,
         2
     ), (
@@ -231,23 +233,13 @@ VALUES (
         'Galaxy S10e',
         '5.8',
         '14.5',
-        0,
         2,
         5
-    ), (
-        3,
-        'Reno6',
-        '6.4',
-        '16.2',
-        0,
-        11,
-        8
-    ), (
+    ), (3, 'Reno6', '6.4', '16.2', 11, 8), (
         5,
         'iPhone12',
         '6.1',
         '15.4',
-        0,
         1,
         3
     ), (
@@ -255,7 +247,6 @@ VALUES (
         'iPhone 7',
         '6.1',
         '15.4',
-        0,
         1,
         7
     ), (
@@ -263,7 +254,6 @@ VALUES (
         'iPhone13',
         '6.1',
         '15.4',
-        0,
         1,
         8
     ), (
@@ -271,7 +261,6 @@ VALUES (
         'Galaxy S21',
         '6.2',
         '15.7',
-        0,
         2,
         3
     ), (
@@ -279,23 +268,13 @@ VALUES (
         'Pixel 6',
         '6.4',
         '16.2',
-        0,
         6,
         14
-    ), (
-        10,
-        '9 Pro',
-        '6.7',
-        '17.1',
-        0,
-        5,
-        13
-    ), (
+    ), (10, '9 Pro', '6.7', '17.1', 5, 13), (
         11,
         'Mi 11',
         '6.81',
         '17.2',
-        0,
         4,
         11
     ), (
@@ -303,7 +282,6 @@ VALUES (
         'P 40Pro',
         '6.58',
         '16.7',
-        0,
         3,
         9
     ), (
@@ -311,35 +289,25 @@ VALUES (
         'Xperia III',
         '6.5',
         '16.5',
-        0,
         7,
         5
-    ), (
-        14,
-        'Velvet',
-        '6.8',
-        '17.2',
-        0,
-        8,
-        4
-    ), (
+    ), (14, 'Velvet', '6.8', '17.2', 8, 4), (
         15,
         'Find X3 Pro',
         '6.7',
         '17.1',
-        0,
         11,
         7
     );
 
 INSERT INTO `os_version`
-VALUES (1, '12', 0), (2, '13', 0), (3, '1.0', 0), (4, '2.0', 0);
+VALUES (1, '12'), (2, '13'), (3, '1.0'), (4, '2.0');
 
 INSERT INTO `os`
-VALUES (1, 'Android', 0, 1), (2, 'iOS', 0, 2), (3, 'Windows10 mobile', 0, 3), (4, 'HarmonyOS', 0, 4);
+VALUES (1, 'Android', 1), (2, 'iOS', 2), (3, 'Windows10 mobile', 3), (4, 'HarmonyOS', 4);
 
 INSERT INTO `state`
 VALUES (1, 'DEEE', 0), (2, 'Réparable', 0), (3, 'Bloqué', 0), (4, 'Reconditionnable', 0), (5, 'Reconditionné', 0);
 
 INSERT INTO `phone`
-VALUES (1, 2, 1, 1, 8, 0, '4G', 2, 5), (2, 2, 2, 1, 8, 16, '4G', 5, 4), (3, 1, 5, 2, 16, 32, '5G', 4, 5), (4, 4, 11, 1, 16, 48, '5G', 1, 3), (5, 6, 9, 1, 8, 4, '3G', 3, 3);
+VALUES (1, 2, 1, 1, 8, 0, '4G', 2, 5, 670), (2, 2, 2, 1, 8, 16, '4G', 5, 4, 170), (3, 1, 5, 2, 16, 32, '5G', 4, 5, 580), (4, 4, 11, 1, 16, 48, '5G', 1, 3, 500), (5, 6, 9, 1, 8, 4, '3G', 3, 3, 450);
