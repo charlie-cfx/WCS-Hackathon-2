@@ -15,6 +15,7 @@ body .home {
   position: fixed;
   top: 0;
   width: 100vw;
+  z-index: 5;
   nav {
     display: flex;
     justify-content: space-between;
@@ -67,6 +68,8 @@ body .home {
     top: 0;
     width: 100vw;
     gap: clamp(1rem, 2rem, 2rem);
+
+    z-index: 5;
 
     .logo {
       img {

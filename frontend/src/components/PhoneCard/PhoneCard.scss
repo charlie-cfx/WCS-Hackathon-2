@@ -9,26 +9,44 @@
   border-radius: 12px;
   overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
 
   .card-header {
-    padding: 1rem;
+    padding: 1.5rem;
     padding-bottom: 0;
     display: grid;
     place-items: center;
     img {
-      width: 80%;
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
     }
+
+    .no-image {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+      background-color: var(--grey-100);
+      color: var(--grey-400);
+      border-radius: 8px;
+    }
+
     .cat-price {
       position: absolute;
-      top: 2rem;
+      top: 2.5rem;
       left: 0;
       color: var(--white);
       padding: 0.5rem 1rem;
       border-radius: 0 0.5rem 0.5rem 0;
       @include shadow("md");
+      z-index: 2;
 
       &-A {
-        background-color: var(--amber-500);
+        background-color: var(--orange-500);
       }
       &-B {
         background-color: var(--yellow-500);
@@ -37,7 +55,7 @@
         background-color: var(--green-500);
       }
       &-HC {
-        background-color: var(--blue-500);
+        background-color: var(--cyan-500);
       }
       &-Premium {
         background-color: var(--red-500);
@@ -49,8 +67,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    justify-content: space-between;
     gap: 1.5rem;
     padding: 1.5rem;
+    flex: 1;
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-self: stretch;
+    }
     .card-info-header {
       display: flex;
       justify-content: space-between;
@@ -58,7 +84,6 @@
       h2 {
         @include title("xs", $weight: 500);
         word-wrap: break-word;
-        word-break: break-all;
         text-wrap: balance;
       }
     }
@@ -69,20 +94,18 @@
       align-items: flex-start;
       color: var(--grey-500);
       span {
-        @include text("md", $weight: 600);
-        color: var(--grey-600);
+        &.bold {
+          @include text("md", $weight: 600);
+          color: var(--grey-600);
+        }
+        &.capitalize {
+          text-transform: capitalize;
+        }
       }
     }
     .more-info {
       width: 100%;
       @include button("md", $color: "blue", $style: "solid");
     }
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .phone-card {
-    // flex-basis: calc(100% / 3 - (24px / 3) * 2);
-    width: 300px;
   }
 }
