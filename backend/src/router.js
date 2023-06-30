@@ -65,7 +65,7 @@ router.delete("/faq/:id", verifyToken, faq.destroy);
 
 router.get("/models", verifyToken, models.browse);
 router.post("/models", verifyToken, models.add);
-router.delete("/models/:id", verifyToken, accessory.destroy);
+router.delete("/models/:id", verifyToken, models.destroy);
 
 router.get("/os", verifyToken, os.browse);
 router.post("/os", verifyToken, os.add);
@@ -76,8 +76,8 @@ router.post("/os_version", verifyToken, osVersion.add);
 router.delete("/os_version/:id", verifyToken, osVersion.destroy);
 
 router.get("/phones", verifyToken, phone.filterPhone);
-router.post("/phones", verifyToken, phone.add);
-router.delete("/phone/:id", verifyToken, phone.destroy);
+// router.post("/phones", verifyToken, phone.add);
+router.delete("/phones/:id", verifyToken, phone.destroy);
 
 router.get("/state", verifyToken, state.browse);
 router.post("/state", verifyToken, state.add);

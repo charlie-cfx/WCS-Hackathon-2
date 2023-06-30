@@ -32,23 +32,27 @@ export default function Faq() {
 
   return (
     // userToken && (
-    <div className="faq">
-      <Navbar />
-      {isDataLoaded ? (
-        <div className="faq-list">
-          {question.map((el) => (
-            <ul>
-              <li key={el.id}>
-                <p>{el.question}</p>
-                <p>{el.answer}</p>
-              </li>
-            </ul>
-          ))}
-        </div>
-      ) : (
-        <p>Chargement...</p>
-      )}
-    </div>
+    <>
+      <div className="faq-container">
+        <Navbar />
+        <h1 className="faq-title">Foire aux questions</h1>
+        {isDataLoaded ? (
+          <div className="faq-list">
+            {question.map((el) => (
+              <ul>
+                <li className="faq-line" key={el.id}>
+                  <p className="faq-question">{el.question}</p>
+
+                  <p className="faq-response">{el.answer}</p>
+                </li>
+              </ul>
+            ))}
+          </div>
+        ) : (
+          <p>Chargement...</p>
+        )}
+      </div>
+    </>
   );
   // );
 }

@@ -1,0 +1,39 @@
+@use "../../styles/typography" as *;
+@use "../../styles/shadows" as *;
+
+.faq-container {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 12rem;
+  @include text("xl");
+  & > * {
+    flex-basis: 100%;
+  }
+}
+
+.faq-list {
+  padding: 2rem;
+  display: flex;
+
+  flex-direction: column;
+  justify-content: center;
+}
+.faq-line {
+  // border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 1rem;
+  margin: 1rem;
+  justify-content: space-between;
+}
+.faq-question {
+  background-color: var(--grey-100);
+  margin-bottom: 1rem;
+  @include text("lg");
+}
+
+.faq-response {
+  @include shadow("md");
+  border-radius: 12px;
+}
