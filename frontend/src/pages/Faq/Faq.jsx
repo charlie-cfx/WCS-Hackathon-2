@@ -35,16 +35,21 @@ export default function Faq() {
     <div className="faq">
       <Navbar />
       {isDataLoaded ? (
-        <div className="faq-list">
-          {question.map((el) => (
-            <ul>
-              <li key={el.id}>
-                <p>{el.question}</p>
-                <p>{el.answer}</p>
-              </li>
+        <main>
+          <header>
+            <h1>FAQ : Réponses aux questions fréquentes</h1>
+          </header>
+          <div className="content">
+            <ul className="faq-list">
+              {question.map((el) => (
+                <li key={el.id}>
+                  <p className="question">{el.question}</p>
+                  <p className="answer">{el.answer}</p>
+                </li>
+              ))}
             </ul>
-          ))}
-        </div>
+          </div>
+        </main>
       ) : (
         <p>Chargement...</p>
       )}

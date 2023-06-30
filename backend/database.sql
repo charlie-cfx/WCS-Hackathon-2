@@ -331,7 +331,7 @@ INSERT INTO
     ), (
         2,
         "Quelles sont les différences entre un smartphone reconditionné et un smartphone neuf ?",
-        "`La principale différence réside dans le fait qu'un smartphone reconditionné a déjà été utilisé, tandis qu'un smartphone neuf est tout juste sorti de l'emballage et n'a jamais été utilisé. Les smartphones reconditionnés peuvent présenter de légères marques d'usure, mais ils sont généralement testés et réparés pour assurer leur bon fonctionnement, tout comme les smartphones neufs."
+        "La principale différence réside dans le fait qu'un smartphone reconditionné a déjà été utilisé, tandis qu'un smartphone neuf est tout juste sorti de l'emballage et n'a jamais été utilisé. Les smartphones reconditionnés peuvent présenter de légères marques d'usure, mais ils sont généralement testés et réparés pour assurer leur bon fonctionnement, tout comme les smartphones neufs."
     ), (
         3,
         "Comment savoir si un smartphone est reconditionnable ?",
