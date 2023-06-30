@@ -139,13 +139,13 @@
         justify-content: flex-end;
         margin-top: 1rem;
         gap: 1rem;
-        .next, .submit {
+        .next,
+        .submit {
           @include button("md", $color: "blue", $style: "solid");
         }
         .prev {
           @include button("md", $color: "grey", $style: "outline");
         }
-
       }
     }
   }
@@ -157,9 +157,10 @@
       background-color: var(--white);
       width: clamp(40%, 50%, 50%);
       z-index: 20;
+      max-height: 95vh;
 
       margin-inline: 3rem;
-      overflow-y: hidden;
+      overflow-y: auto;
 
       .body {
         .radio-group-os,
