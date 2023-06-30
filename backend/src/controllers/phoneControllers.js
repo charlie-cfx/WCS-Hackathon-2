@@ -50,8 +50,6 @@ const destroy = (req, res) => {
 const add = (req, res) => {
   const phone = req.body;
 
-  // TODO validations (length, format...)
-
   models.phone
     .insert(phone)
     .then(([result]) => {

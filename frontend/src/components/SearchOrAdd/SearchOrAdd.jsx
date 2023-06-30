@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 import PropTypes from "prop-types";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
@@ -13,6 +15,8 @@ export default function SearchOrAdd({
   id,
   query,
   field,
+  formObject,
+  setFormObject,
 }) {
   const { userToken } = useContext(AuthContext);
   const [searchData, setSearchData] = useState([]);
@@ -20,6 +24,13 @@ export default function SearchOrAdd({
   const [areResultsVisible, setAreResultsVisible] = useState(false);
   const [fieldValue, setFieldValue] = useState("");
   const [isButtonVisible, setIsButtonVisible] = useState(false);
+
+  const handleFormObject = (item_id) => {
+    setFormObject({
+      ...formObject,
+      [id]: item_id,
+    });
+  };
 
   useEffect(() => {
     axios
@@ -60,10 +71,6 @@ export default function SearchOrAdd({
     filterResults(fieldValue);
   }, [fieldValue]);
 
-  // handleAddClick = () => {
-  //   axios.post;
-  // };
-
   return (
     <div className="input-field search-or-add">
       <label htmlFor={id}>{label}</label>
@@ -90,6 +97,7 @@ export default function SearchOrAdd({
               onClick={() => {
                 setFieldValue(item[field]);
                 setAreResultsVisible(false);
+                handleFormObject(item.id);
               }}
               aria-hidden="true"
             >
@@ -108,4 +116,16 @@ SearchOrAdd.propTypes = {
   id: PropTypes.string.isRequired,
   query: PropTypes.string.isRequired,
   field: PropTypes.string.isRequired,
+  formObject: PropTypes.shape({
+    brand: PropTypes.number.isRequired,
+    model: PropTypes.number.isRequired,
+    OSId: PropTypes.number.isRequired,
+    ram: PropTypes.number.isRequired,
+    memory: PropTypes.number.isRequired,
+    network: PropTypes.string.isRequired,
+    accessoryId: PropTypes.number.isRequired,
+    stateId: PropTypes.number.isRequired,
+    basePrice: PropTypes.number.isRequired,
+  }).isRequired,
+  setFormObject: PropTypes.func.isRequired,
 };

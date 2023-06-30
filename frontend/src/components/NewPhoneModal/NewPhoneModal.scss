@@ -139,13 +139,13 @@
         justify-content: flex-end;
         margin-top: 1rem;
         gap: 1rem;
-        .next, .submit {
+        .next,
+        .submit {
           @include button("md", $color: "blue", $style: "solid");
         }
         .prev {
           @include button("md", $color: "grey", $style: "outline");
         }
-
       }
     }
   }
