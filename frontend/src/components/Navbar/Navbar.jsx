@@ -83,7 +83,11 @@ export default function Navbar() {
           />
         )}
         <nav>
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={() => navigate("/home")}
+            aria-hidden="true"
+          >
             <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
           </div>
 
