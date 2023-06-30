@@ -100,7 +100,7 @@ function SideBar({ filters, setFilters }) {
     states[index].checked = !states[index].checked;
   };
 
-  const [areFiltersVisible, setAreFiltersVisible] = useState(false);
+  const [areFiltersVisible, setAreFiltersVisible] = useState(true);
 
   //   ---------------------------------------------------return------------------------------------------------------------
 
