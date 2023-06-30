@@ -11,7 +11,7 @@ import "./Home.scss";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { userToken } = useContext(AuthContext);
+  const { userToken, togglePhones } = useContext(AuthContext);
   const [phonesData, setPhonesData] = useState("");
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [filters, setFilters] = useState({
@@ -55,7 +55,7 @@ export default function Home() {
     if (!userToken) {
       navigate("/");
     }
-  }, [userToken, filters]);
+  }, [userToken, filters, togglePhones]);
 
   return (
     userToken && (

@@ -7,8 +7,8 @@ class PhoneManager extends AbstractManager {
 
   insert(phone) {
     const {
-      brandId,
-      modelId,
+      brand,
+      model,
       OSId,
       ram,
       memory,
@@ -20,8 +20,8 @@ class PhoneManager extends AbstractManager {
     return this.database.query(
       `insert into ${this.table} (brand_id, model_id, OS_id, ram, memory, network, accessory_id, state_id, base_price) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        brandId,
-        modelId,
+        brand,
+        model,
         OSId,
         ram,
         memory,
