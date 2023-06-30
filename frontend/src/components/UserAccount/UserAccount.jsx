@@ -63,9 +63,11 @@ export default function UserAccount({ userInfo }) {
   };
 
   return (
-    <div className="account-info">
-      <header className="App-header">
+    <>
+      <header>
         <h1>Mes informations</h1>
+      </header>
+      <div className="content user-account">
         <form onSubmit={handleSubmit}>
           <div className="input-line">
             <div className="input-field">
@@ -119,7 +121,7 @@ export default function UserAccount({ userInfo }) {
               </div>
             </div>
           </div>
-          <button type="submit" className="validate-button">
+          <button type="submit" className="button-md-blue-solid">
             Valider modification
           </button>
         </form>
@@ -139,32 +141,17 @@ export default function UserAccount({ userInfo }) {
               </div>
             </div>
           </div>
-          <button type="submit" className="validate-button">
+          <button type="submit" className="button-md-blue-solid">
             Valider changement de mot de passe
           </button>
         </form>
-      </header>
-      {message && (
-        <div>
-          <button
-            className="bg-modification-validation"
-            type="button"
-            onClick={() => setMessage(false)}
-            label="close modal"
-          />
-          <div className="modification-validation">
-            <button
-              className="exit-modal"
-              type="button"
-              onClick={() => setMessage(false)}
-            >
-              <i className="fi fi-rr-cross-small" />
-            </button>
+        {message && (
+          <div>
             <p>Modifications validés.</p>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 

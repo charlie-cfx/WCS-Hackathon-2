@@ -133,8 +133,10 @@ export default function PhoneCard({ phone }) {
               ${screeSizeCm} cm`}
             </li>
             <li>
-              <span className="bold">Couleur :</span>
-              <span className="capitalize"> {color_name_fr}</span>
+              <span className="bold">Couleur : </span>
+              <span className="capitalize">
+                {color_name_fr === null ? "Non renseignée" : color_name_fr}
+              </span>
             </li>
             <li>
               <span className="bold">Accessoires :</span>
@@ -142,9 +144,9 @@ export default function PhoneCard({ phone }) {
             </li>
           </ul>
         </div>
-        <button className="more-info" type="button">
+        {/* <button className="more-info" type="button">
           En savoir plus
-        </button>
+        </button> */}
       </div>
     </div>
   );

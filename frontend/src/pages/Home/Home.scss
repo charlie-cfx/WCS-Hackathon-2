@@ -6,7 +6,6 @@
   flex-wrap: wrap;
   gap: 1rem;
   padding: 2rem;
-  margin-left: 15rem;
 
   & > * {
     flex-basis: 100%;
@@ -15,6 +14,7 @@
 
 @media screen and (min-width: 768px) {
   .cards-list {
+    margin-left: 15rem;
     & > * {
       flex-basis: calc(100% / 2 - (1rem / 2));
     }

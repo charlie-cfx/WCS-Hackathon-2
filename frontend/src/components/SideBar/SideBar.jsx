@@ -100,6 +100,8 @@ function SideBar({ filters, setFilters }) {
     states[index].checked = !states[index].checked;
   };
 
+  const [areFiltersVisible, setAreFiltersVisible] = useState(false);
+
   //   ---------------------------------------------------return------------------------------------------------------------
 
   return (
@@ -117,75 +119,95 @@ function SideBar({ filters, setFilters }) {
             />
           </div>
         </label>
-        <div className="tags" />
+        <button
+          className="filters"
+          type="button"
+          onClick={() => setAreFiltersVisible(!areFiltersVisible)}
+        >
+          Filtres <i className="fi fi-rr-bars-filter" />
+        </button>
       </div>
 
       <hr />
-      <div className="brand">
-        <h3>
-          <span className="brand-color-red">•</span> Marque
-        </h3>
-        <div className="brand-inputs">
-          {brands.map((brand, index) => (
-            <div className="input-checkbox input-checkbox--sm" key={brand.id}>
-              <label htmlFor={brand.brand_name}>
-                <input
-                  type="checkbox"
-                  onChange={(e) => handleBrandChange(e, index)}
-                  id={brand.brand_name}
-                  name={brand.brand_name}
-                  value={brand.id}
-                  checked={brand.checked}
-                />
-                <div className="checkbox checkbox-red" /> {brand.brand_name}
-              </label>
+      {areFiltersVisible && (
+        <>
+          <div className="brand">
+            <h3>
+              <span className="brand-color-red">•</span> Marque
+            </h3>
+            <div className="brand-inputs">
+              {brands.map((brand, index) => (
+                <div
+                  className="input-checkbox input-checkbox--sm"
+                  key={brand.id}
+                >
+                  <label htmlFor={brand.brand_name}>
+                    <input
+                      type="checkbox"
+                      onChange={(e) => handleBrandChange(e, index)}
+                      id={brand.brand_name}
+                      name={brand.brand_name}
+                      value={brand.id}
+                      checked={brand.checked}
+                    />
+                    <div className="checkbox checkbox-red" /> {brand.brand_name}
+                  </label>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="model">
-        <h3>
-          <span className="brand-color-yellow">•</span> Modèle
-        </h3>
-        <div className="model-inputs">
-          {" "}
-          {models.map((model, index) => (
-            <div className="input-checkbox input-checkbox--sm" key={model.id}>
-              <label htmlFor={model.model_name}>
-                <input
-                  type="checkbox"
-                  id={model.model_name}
-                  name={model.name}
-                  value={model.id}
-                  onChange={(e) => handleModelChange(e, index)}
-                />
-                <div className="checkbox checkbox-yellow" /> {model.model_name}
-              </label>
+          </div>
+          <div className="model">
+            <h3>
+              <span className="brand-color-yellow">•</span> Modèle
+            </h3>
+            <div className="model-inputs">
+              {" "}
+              {models.map((model, index) => (
+                <div
+                  className="input-checkbox input-checkbox--sm"
+                  key={model.id}
+                >
+                  <label htmlFor={model.model_name}>
+                    <input
+                      type="checkbox"
+                      id={model.model_name}
+                      name={model.name}
+                      value={model.id}
+                      onChange={(e) => handleModelChange(e, index)}
+                    />
+                    <div className="checkbox checkbox-yellow" />{" "}
+                    {model.model_name}
+                  </label>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
-      <div className="state">
-        <h3>
-          <span className="brand-color-green">•</span> État
-        </h3>
-        <div className="state-inputs">
-          {states.map((state, index) => (
-            <div className="input-checkbox input-checkbox--sm" key={state.id}>
-              <label htmlFor={state.state}>
-                <input
-                  type="checkbox"
-                  id={state.state}
-                  name={state.state}
-                  value={state.id}
-                  onChange={(e) => handleStateChange(e, index)}
-                />
-                <div className="checkbox checkbox-green" /> {state.state}
-              </label>
+          </div>
+          <div className="state">
+            <h3>
+              <span className="brand-color-green">•</span> État
+            </h3>
+            <div className="state-inputs">
+              {states.map((state, index) => (
+                <div
+                  className="input-checkbox input-checkbox--sm"
+                  key={state.id}
+                >
+                  <label htmlFor={state.state}>
+                    <input
+                      type="checkbox"
+                      id={state.state}
+                      name={state.state}
+                      value={state.id}
+                      onChange={(e) => handleStateChange(e, index)}
+                    />
+                    <div className="checkbox checkbox-green" /> {state.state}
+                  </label>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }

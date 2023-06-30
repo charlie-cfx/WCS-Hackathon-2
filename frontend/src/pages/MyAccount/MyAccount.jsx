@@ -35,16 +35,18 @@ export default function MyAccount() {
 
   return (
     userToken && (
-      <div className="home">
+      <>
         <Navbar />
         {isDataLoaded ? (
-          <div className="user-info">
+          <main>
+            {/* <div className="user-info"> */}
             <UserAccount userInfo={userData} />
-          </div>
+            {/* </div> */}
+          </main>
         ) : (
           <p>Chargement...</p>
         )}
-      </div>
+      </>
     )
   );
 }

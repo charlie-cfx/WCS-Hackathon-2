@@ -17,7 +17,11 @@ export default function Navbar() {
   return (
     <>
       <nav id="navbar">
-        <div className="logo">
+        <div
+          className="logo"
+          onClick={() => navigate("/home")}
+          aria-hidden="true"
+        >
           <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
         </div>
         <ul className="items">
@@ -41,13 +45,13 @@ export default function Navbar() {
               <i className="fi fi-rr-interrogation" /> FAQ
             </button>
           </li>
-          {isAdmin === 1 && (
+          {/* {isAdmin === 1 && (
             <li>
               <button className="button-md-grey-link" type="button">
                 <i className="fi fi-rr-tags" /> Gérer la pondération
               </button>
             </li>
-          )}
+          )} */}
           {isAdmin === 1 && (
             <li>
               <button
@@ -71,8 +75,19 @@ export default function Navbar() {
         </ul>
       </nav>
       <div id="navbar-mobile">
+        {isMenuOpen && (
+          <div
+            className="nav-filter"
+            onClick={() => setIsMenuOpen(false)}
+            aria-hidden="true"
+          />
+        )}
         <nav>
-          <div className="logo">
+          <div
+            className="logo"
+            onClick={() => navigate("/home")}
+            aria-hidden="true"
+          >
             <img src="../src/assets/Logo.svg" alt="Logo Emmaus Connect" />
           </div>
 
@@ -92,33 +107,47 @@ export default function Navbar() {
           <ul className="items">
             {isAdmin && (
               <li>
-                <button className="button-md-blue-solid" type="button">
+                <button
+                  className="button-md-blue-solid"
+                  type="button"
+                  onClick={() => setIsNewPhoneModalOpen(true)}
+                >
                   <i className="fi fi-rr-plus" /> Ajouter un smartphone
                 </button>
               </li>
             )}
-
             <li>
               <button
-                className="button-md-grey-outline"
+                className="button-md-grey-link"
                 onClick={() => navigate("/faq")}
                 type="button"
               >
                 <i className="fi fi-rr-interrogation" /> FAQ
               </button>
             </li>
-            {isAdmin === 1 && (
+            {/* {isAdmin === 1 && (
               <li>
                 <button className="button-md-grey-link" type="button">
                   <i className="fi fi-rr-tags" /> Gérer la pondération
                 </button>
               </li>
+            )} */}
+            {isAdmin === 1 && (
+              <li>
+                <button
+                  className="button-md-grey-link"
+                  type="button"
+                  onClick={() => navigate("/users")}
+                >
+                  <i className="fi fi-rr-users" /> Gestion utilisateurs
+                </button>
+              </li>
             )}
             <li>
               <button
-                className="button-md-grey-outline"
-                onClick={() => navigate("/user")}
+                className="button-md-grey-link"
                 type="button"
+                onClick={() => navigate("/user")}
               >
                 <i className="fi fi-rr-user" /> Mon compte
               </button>
