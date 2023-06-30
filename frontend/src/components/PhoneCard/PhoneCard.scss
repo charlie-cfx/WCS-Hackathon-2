@@ -1,0 +1,114 @@
+@use "../../styles/typography" as *;
+@use "../../styles/button" as *;
+@use "../../styles/shadows" as *;
+
+.phone-card {
+  width: 100%;
+  @include shadow("xs");
+  border: 1px solid var(--grey-200);
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .card-header {
+    padding: 1.5rem;
+
+    display: grid;
+    place-items: center;
+    img {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+    }
+
+    .no-image {
+      width: 100%;
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 6rem;
+      background-color: var(--grey-100);
+      color: var(--grey-400);
+      border-radius: 8px;
+    }
+
+    .cat-price {
+      position: absolute;
+      top: 2.5rem;
+      left: 0;
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+      @include shadow("md");
+      z-index: 2;
+
+      &-A {
+        background-color: var(--orange-500);
+      }
+      &-B {
+        background-color: var(--yellow-500);
+      }
+      &-C {
+        background-color: var(--green-500);
+      }
+      &-HC {
+        background-color: var(--cyan-500);
+      }
+      &-Premium {
+        background-color: var(--red-500);
+      }
+    }
+  }
+  .card-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    flex: 1;
+    .card-top {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-self: stretch;
+    }
+    .card-info-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 100%;
+      h2 {
+        @include title("xs", $weight: 500);
+        text-wrap: balance;
+      }
+      .badge {
+        align-self: flex-start;
+      }
+    }
+    .caracteristics {
+      display: flex;
+      gap: 4px;
+      flex-direction: column;
+      align-items: flex-start;
+      color: var(--grey-500);
+      span {
+        &.bold {
+          @include text("md", $weight: 600);
+          color: var(--grey-600);
+        }
+        &.capitalize {
+          text-transform: capitalize;
+        }
+      }
+    }
+    .more-info {
+      width: 100%;
+      @include button("md", $color: "blue", $style: "solid");
+    }
+  }
+}
